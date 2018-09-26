@@ -1,13 +1,11 @@
-import { KeyProcessChartModel } from './key.process.chart.model';
-import { StrategicProcessChartModel } from './strategic.process.chart.model';
-import { SupportProcessChartModel } from './support.process.chart.model';
+import { RadarChartModel } from './radar.chart.model';
 import { OrganizationalMatureChartModel } from './organizational.mature.chart.model';
 import { MatureProfileChartModel } from './mature.profile.chart.model';
 
 export class ChartsConfigModel {
-    keyProcessChart: KeyProcessChartModel;
-    strategicChart: StrategicProcessChartModel;
-    supportProcessChart: SupportProcessChartModel;
+    keyProcessChart: RadarChartModel;
+    strategicChart: RadarChartModel;
+    supportProcessChart: RadarChartModel;
     organizationalMatureChart: OrganizationalMatureChartModel;
     matureProfileChart: MatureProfileChartModel;
 
