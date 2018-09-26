@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GraphicsService } from '../../services/graphics.service';
 import { SurveyDropDownModel } from '../../models/survey.dropdown.model';
 import { BaseComponent } from '../../shared/base/base.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ import { BaseComponent } from '../../shared/base/base.component';
 export class HomeComponent extends BaseComponent implements OnInit {
 
   dropdownInfo: SurveyDropDownModel[] = [];
-  constructor(private graphicsService: GraphicsService) {
+  constructor(private graphicsService: GraphicsService, private toastrService: ToastrService) {
     super();
   }
 
@@ -20,6 +21,7 @@ export class HomeComponent extends BaseComponent implements OnInit {
       this.dropdownInfo = data;
     }, (error) => {
       //
+      this.toastrService.error(error.message, 'Error');
     }));
   }
 
