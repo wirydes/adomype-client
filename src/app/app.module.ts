@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-
+import { RouterModule} from '@angular/router';
+import { routes } from './routing';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { ChartComponent } from './components/chart/chart.component';
@@ -23,6 +24,7 @@ import { MatSelectModule } from '@angular/material/select';
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot(routes),
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     MatToolbarModule,
