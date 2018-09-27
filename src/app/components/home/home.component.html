@@ -1,3 +1,29 @@
-<p>
-  home works!
-</p>
+<div class="col-12">
+  <div class="row">
+    <mat-form-field [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-select formControlName="selected" placeholder="Select one">
+        <mat-option *ngFor="let option of dropdownInfo" [value]="options.id">{{option.name}}</mat-option>
+      </mat-select>
+
+      <button mat-button type="submit">Get graphics</button>
+    </mat-form-field>
+  </div>
+
+  <div class="row" *ngIf="!!chartInfo">
+    <mat-card class="col-12 col-md-6">
+      <app-chart [chartData]="chartInfo.keyProcessChart" [type]="types.radar"></app-chart>
+    </mat-card>
+    <!-- <mat-card class="col-12 col-md-6">
+      <app-chart [chartData]="chartInfo.strategicChart" [type]="types.radar"></app-chart>
+    </mat-card>
+    <mat-card class="col-12 col-md-6">
+      <app-chart [chartData]="chartInfo.supportProcessChart" [type]="types.radar"></app-chart>
+    </mat-card>
+    <mat-card class="col-12 col-md-6">
+      <app-chart [chartData]="chartInfo.organizationalMatureChart" [type]="types.hBar"></app-chart>
+    </mat-card>
+    <mat-card class="col-12">
+      <app-chart [chartData]="chartInfo.matureProfileChart" [type]="types.bar"></app-chart>
+    </mat-card> -->
+  </div>
+</div>
