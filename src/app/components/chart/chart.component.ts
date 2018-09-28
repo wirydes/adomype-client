@@ -77,6 +77,8 @@ export class ChartComponent implements OnInit, OnChanges {
           data: values,
           borderColor: 'blue',
           backgroundColor: 'rgb(160, 142, 248, 0.2)',
+          pointBorderColor: 'blue',
+          pointBackgroundColor: 'red',
           fill: true
         }],
       },
@@ -138,25 +140,25 @@ export class ChartComponent implements OnInit, OnChanges {
   getBarDataLabels() {
     const array = [];
     const value1 = this.getPercentage(this.chartData.section1.parts);
-    const label1 = this.chartData.section1.name +  ':' + value1.toPrecision(2);
+    const label1 = this.chartData.section1.name + ':' + value1.toPrecision(2);
     array.push(label1);
     const value2 = this.getPercentage(this.chartData.section2.parts);
-    const label2 = this.chartData.section2.name +  ':' + value2.toPrecision(2);
+    const label2 = this.chartData.section2.name + ':' + value2.toPrecision(2);
     array.push(label2);
     const value3 = this.getPercentage(this.chartData.section3.parts);
-    const label3 = this.chartData.section3.name +  ':' + value3.toPrecision(2);
+    const label3 = this.chartData.section3.name + ':' + value3.toPrecision(2);
     array.push(label3);
     const value4 = this.getPercentage(this.chartData.section4.parts);
-    const label4 = this.chartData.section4.name +  ':' + value4.toPrecision(2);
+    const label4 = this.chartData.section4.name + ':' + value4.toPrecision(2);
     array.push(label4);
     const value5 = this.getPercentage(this.chartData.section5.parts);
-    const label5 = this.chartData.section5.name +  ':' + value5.toPrecision(2);
+    const label5 = this.chartData.section5.name + ':' + value5.toPrecision(2);
     array.push(label5);
     const value6 = this.getPercentage(this.chartData.section6.parts);
-    const label6 = this.chartData.section6.name +  ':' + value6.toPrecision(2);
+    const label6 = this.chartData.section6.name + ':' + value6.toPrecision(2);
     array.push(label6);
     const value7 = this.getPercentage(this.chartData.section7.parts);
-    const label7 = this.chartData.section7.name +  ':' + value7.toPrecision(2);
+    const label7 = this.chartData.section7.name + ':' + value7.toPrecision(2);
     array.push(label7);
 
     return array;
