@@ -35,12 +35,19 @@ export class HomeComponent extends BaseComponent implements OnInit {
   }
 
   onSubmit() {
+    this.chartInfo = null;
     const id = this.form.get('selected').value;
     this.onSubscribe.push(this.graphicsService.getSurveyChartInfo(id).subscribe((data) => {
       this.chartInfo = data;
     }, (error) => {
       this.toastrService.error(error.message, 'Error');
     }));
+  }
+
+  isDisabled() {
+    const id = this.form.get('selected').value;
+
+    return !id;
   }
 
 }
