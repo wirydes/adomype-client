@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, ViewChild, ElementRef } from '@angular/core';
 import { Chart } from 'chart.js';
 import * as chartTypes from '../../models/chart.type';
 import { RadarChartModel } from '../../models/radar.chart.model';
@@ -12,7 +12,7 @@ import { ChartFieldModel } from '../../models/chart.field.model';
 export class ChartComponent implements OnInit, OnChanges {
   @Input() chartData: any;
   @Input() chartType: string;
-  canvas = 'canvas';
+  @ViewChild('canvas') canvas: ElementRef;
   chart = [];
   constructor() { }
 
@@ -38,25 +38,33 @@ export class ChartComponent implements OnInit, OnChanges {
   handleRadar() {
     const labels = this.getRadarLabels();
     const values = this.getRadarValues();
-    this.chart = new Chart(this.canvas, {
+    this.chart = new Chart(this.canvas.nativeElement, {
       type: 'radar',
       data: {
         labels: labels,
         datasets: [{
-          data: values
-        }]
+          data: values,
+          borderColor: 'blue',
+          backgroundColor: 'rgb(160, 142, 248, 0.5)',
+          fill: true
+        }],
+      },
+      options: {
+        legend: {
+          display: false
+        }
       }
     });
   }
 
   getRadarLabels(): string[] {
-    return this.chartData.parts.array.map((element: ChartFieldModel) => {
+    return this.chartData.parts.map((element: ChartFieldModel) => {
       return element.label;
     });
   }
 
   getRadarValues(): number[] {
-    return this.chartData.parts.array.map((element: ChartFieldModel) => {
+    return this.chartData.parts.map((element: ChartFieldModel) => {
       return element.value;
     });
   }
