@@ -7,7 +7,10 @@ import { routes } from './routing';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { ChartComponent } from './components/chart/chart.component';
-import { BaseComponent } from './shared/base/base.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+
 
 // material modules
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -21,11 +24,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   declarations: [
     AppComponent,
     HomeComponent,
-    ChartComponent,
-    BaseComponent
+    ChartComponent
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
     ToastrModule.forRoot(),

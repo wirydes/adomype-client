@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 @Injectable()
-export class BaseComponent implements OnInit, OnDestroy {
+export abstract class BaseComponent implements OnInit, OnDestroy {
 
-  onSubscribe: Subscription[];
+  onSubscribe: Subscription[] = [];
   constructor() { }
 
   ngOnInit() {

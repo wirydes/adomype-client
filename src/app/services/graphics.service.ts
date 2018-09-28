@@ -8,7 +8,8 @@ import { ChartsConfigModel } from '../models/charts.config.model';
   providedIn: 'root'
 })
 export class GraphicsService {
-  private url = 'localhost:3000/api/adomype';
+  // update this to the real endpoint
+  private url = 'http://localhost:3000/api/adomype';
 
   constructor(private http: HttpClient) { }
 
