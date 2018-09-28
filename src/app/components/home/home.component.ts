@@ -29,7 +29,8 @@ export class HomeComponent extends BaseComponent implements OnInit {
     this.onSubscribe.push(this.graphicsService.getDropDownInfo().subscribe((data) => {
       this.dropdownInfo = data;
     }, (error) => {
-      this.toastrService.error(error.message, 'Error');
+
+      setTimeout(() => this.toastrService.error(error.message, 'Error'), 0);
     }));
   }
 

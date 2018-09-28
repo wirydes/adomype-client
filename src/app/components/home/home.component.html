@@ -1,29 +1,33 @@
 <div class="col-12">
-  <div class="row">
-    <mat-form-field [formGroup]="form" (ngSubmit)="onSubmit()">
-      <mat-select formControlName="selected" placeholder="Select one">
-        <mat-option *ngFor="let option of dropdownInfo" [value]="options.id">{{option.name}}</mat-option>
-      </mat-select>
-
+  <div class="row" >
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="col-12">
+      <div class="col-4"></div>
+      <mat-form-field class="col-4">
+        <mat-select formControlName="selected" placeholder="Select one">
+          <mat-option *ngFor="let option of dropdownInfo" [value]="option.id">{{option.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
       <button mat-button type="submit">Get graphics</button>
-    </mat-form-field>
+      <div class="col-4"></div>
+    </form>
   </div>
 
   <div class="row" *ngIf="!!chartInfo">
-    <mat-card class="col-12 col-md-6">
-      <app-chart [chartData]="chartInfo.keyProcessChart" [type]="types.radar"></app-chart>
+    <mat-card class="col-sm-12 col-md-6">
+      <app-chart [chartData]="chartInfo.keyProcessChart" [chartType]="types.radar"></app-chart>
     </mat-card>
-    <!-- <mat-card class="col-12 col-md-6">
-      <app-chart [chartData]="chartInfo.strategicChart" [type]="types.radar"></app-chart>
+    <mat-card class="col-sm-12 col-md-6">
+      <app-chart [chartData]="chartInfo.strategicChart" [chartType]="types.radar"></app-chart>
     </mat-card>
-    <mat-card class="col-12 col-md-6">
-      <app-chart [chartData]="chartInfo.supportProcessChart" [type]="types.radar"></app-chart>
+    <mat-card class="col-sm-12 col-md-6">
+      <app-chart [chartData]="chartInfo.supportProcessChart" [chartType]="types.radar"></app-chart>
     </mat-card>
+        <!-- 
     <mat-card class="col-12 col-md-6">
-      <app-chart [chartData]="chartInfo.organizationalMatureChart" [type]="types.hBar"></app-chart>
+      <app-chart [chartData]="chartInfo.organizationalMatureChart" [chartType]="types.hBar"></app-chart>
     </mat-card>
     <mat-card class="col-12">
-      <app-chart [chartData]="chartInfo.matureProfileChart" [type]="types.bar"></app-chart>
+      <app-chart [chartData]="chartInfo.matureProfileChart" [chartType]="types.bar"></app-chart>
     </mat-card> -->
   </div>
 </div>
