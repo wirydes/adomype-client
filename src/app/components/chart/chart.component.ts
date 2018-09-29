@@ -38,18 +38,7 @@ export class ChartComponent implements OnInit, OnChanges {
   handleRadar() {
     const labels = this.getRadarLabels();
     const values = this.getRadarValues();
-    const options = {
-      legend: {
-        display: false
-      },
-      scale: {
-        ticks: {
-          beginAtZero: true,
-          max: 100
-        }
-      },
-      animation: this.getAnimationOptions()
-    };
+    const options = this.getRadarOptions();
     this.chart = new Chart(this.canvas.nativeElement, {
       type: 'radar',
       data: {
@@ -67,6 +56,21 @@ export class ChartComponent implements OnInit, OnChanges {
     });
   }
 
+  getRadarOptions() {
+    return {
+      legend: {
+        display: false
+      },
+      scale: {
+        ticks: {
+          beginAtZero: true,
+          max: 100
+        }
+      },
+      animation: this.getAnimationOptionsConfig()
+    };
+  }
+
   getRadarLabels(): string[] {
     return this.chartData.parts.map((element: ChartFieldModel) => {
       return element.label;
@@ -80,7 +84,21 @@ export class ChartComponent implements OnInit, OnChanges {
   }
 
   handleBar() {
-    const options = {
+    const options = this.getBarOptions();
+    const datasets = this.getBarDataSets();
+    const lables = this.getBarDataLabels();
+    this.chart = new Chart(this.canvas.nativeElement, {
+      type: 'bar',
+      data: {
+        labels: lables,
+        datasets: datasets,
+      },
+      options: options
+    });
+  }
+
+  getBarOptions() {
+    return {
       scales: {
         xAxes: [{
         }],
@@ -94,21 +112,11 @@ export class ChartComponent implements OnInit, OnChanges {
       legend: {
         display: false
       },
-      animation: this.getAnimationOptions()
+      animation: this.getAnimationOptionsConfig()
     };
-    const datasets = this.getBarDataSets();
-    const lables = this.getBarDataLabels();
-    this.chart = new Chart(this.canvas.nativeElement, {
-      type: 'bar',
-      data: {
-        labels: lables,
-        datasets: datasets,
-      },
-      options: options
-    });
   }
 
-  getAnimationOptions() {
+  getAnimationOptionsConfig() {
     return {
       duration: 500,
       easing: 'easeOutQuart',
@@ -122,8 +130,10 @@ export class ChartComponent implements OnInit, OnChanges {
           this.data.datasets.forEach((dataset, i) => {
             ctx.fillStyle = 'black';
             chart.getDatasetMeta(i).data.forEach((p, j) => {
-              if (this.data.datasets[i].data[j] !== 0) {
-                ctx.fillText(this.data.datasets[i].data[j].toPrecision(2) + '%', p._model.x, p._model.y + 20);
+              const value = this.data.datasets[i].data[j];
+              if (value !== 0) {
+                const precision = value === 100 ? 3 : 2;
+                ctx.fillText(value.toPrecision(precision) + '%', p._model.x, p._model.y + 20);
               }
             });
           });
@@ -244,8 +254,34 @@ export class ChartComponent implements OnInit, OnChanges {
     const color = this.getHorizontalColor();
     const value1 = this.chartData.fullFinishPercentage;
     const value2 = this.chartData.unFinishPercentage;
+    const options = this.getHorizontalBarOptions();
+    this.chart = new Chart(this.canvas.nativeElement, {
+      type: 'horizontalBar',
+      data: {
+        labels: [label],
+        datasets: [{
+          label: '% de cumplimiento',
+          data: [value1],
+          borderColor: 'blue',
+          backgroundColor: color,
+          fill: true
+        },
+        {
+          label: '% de incumplimiento',
+          data: [value2],
+          borderColor: 'blue',
+          backgroundColor: 'rgb(128,128,128,0.6)',
+          fill: true
+        }
+        ],
+      },
+      options: options
+    });
+  }
+
+  getHorizontalBarOptions() {
     const theHelp = Chart.helpers;
-    const options = {
+    return {
       scales: {
         xAxes: [{
           stacked: true,
@@ -256,7 +292,7 @@ export class ChartComponent implements OnInit, OnChanges {
         }],
         yAxes: [{ stacked: true }]
       },
-      animation: this.getAnimationOptions(),
+      animation: this.getAnimationOptionsConfig(),
       legend: {
         display: true,
 
@@ -294,30 +330,7 @@ export class ChartComponent implements OnInit, OnChanges {
         }
       }
     };
-    this.chart = new Chart(this.canvas.nativeElement, {
-      type: 'horizontalBar',
-      data: {
-        labels: [label],
-        datasets: [{
-          label: '% de cumplimiento',
-          data: [value1],
-          borderColor: 'blue',
-          backgroundColor: color,
-          fill: true
-        },
-        {
-          label: '% de incumplimiento',
-          data: [value2],
-          borderColor: 'blue',
-          backgroundColor: 'rgb(107,142,35,0.6)',
-          fill: true
-        }
-        ],
-      },
-      options: options
-    });
   }
-
   getHorizontalColor() {
     switch (this.chartData.matureLv) {
       case 'Incipiente':
