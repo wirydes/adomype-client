@@ -48,26 +48,7 @@ export class ChartComponent implements OnInit, OnChanges {
           max: 100
         }
       },
-      animation: {
-        duration: 500,
-        easing: 'easeOutQuart',
-        onComplete: function () {
-          const ctx = this.chart.ctx;
-          ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontFamily, 'normal', Chart.defaults.global.defaultFontFamily);
-          ctx.textAlign = 'center';
-          ctx.fillStyle = 'black';
-          if (!!this.data) {
-            this.data.datasets.forEach(function (dataset) {
-              for (let i = 0; i < dataset.data.length; i++) {
-                if (dataset._meta[0]) {
-                  const model = dataset._meta[0].data[i]._model;
-                  ctx.fillText(dataset.data[i], model.x, model.y - 2);
-                }
-              }
-            });
-          }
-        }
-      }
+      animation: this.getAnimationOptions()
     };
     this.chart = new Chart(this.canvas.nativeElement, {
       type: 'radar',
@@ -75,7 +56,7 @@ export class ChartComponent implements OnInit, OnChanges {
         labels: labels,
         datasets: [{
           data: values,
-          borderColor: 'blue',
+          borderColor: 'rgb(30,144,255)',
           backgroundColor: 'rgb(160, 142, 248, 0.2)',
           pointBorderColor: 'blue',
           pointBackgroundColor: 'red',
@@ -112,7 +93,8 @@ export class ChartComponent implements OnInit, OnChanges {
       },
       legend: {
         display: false
-      }
+      },
+      animation: this.getAnimationOptions()
     };
     const datasets = this.getBarDataSets();
     const lables = this.getBarDataLabels();
@@ -124,6 +106,30 @@ export class ChartComponent implements OnInit, OnChanges {
       },
       options: options
     });
+  }
+
+  getAnimationOptions() {
+    return {
+      duration: 500,
+      easing: 'easeOutQuart',
+      onComplete: function () {
+        const ctx = this.chart.ctx;
+        const chart = this;
+        ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontFamily, 'normal', Chart.defaults.global.defaultFontFamily);
+        ctx.textAlign = 'center';
+        ctx.fillStyle = 'black';
+        if (!!this.data) {
+          this.data.datasets.forEach((dataset, i) => {
+            ctx.fillStyle = 'black';
+            chart.getDatasetMeta(i).data.forEach((p, j) => {
+              if (this.data.datasets[i].data[j] !== 0) {
+                ctx.fillText(this.data.datasets[i].data[j].toPrecision(2) + '%', p._model.x, p._model.y + 20);
+              }
+            });
+          });
+        }
+      }
+    };
   }
 
   getPercentage(parts) {
@@ -140,7 +146,7 @@ export class ChartComponent implements OnInit, OnChanges {
   getBarDataLabels() {
     const array = [];
     const value1 = this.getPercentage(this.chartData.section1.parts);
-    const label1 = this.chartData.section1.name + ':' + value1.toPrecision(2);
+    const label1 = this.chartData.section1.name + ':' + value1.toPrecision(2) + '%';
     array.push(label1);
     const value2 = this.getPercentage(this.chartData.section2.parts);
     const label2 = this.chartData.section2.name + ':' + value2.toPrecision(2);
@@ -178,7 +184,7 @@ export class ChartComponent implements OnInit, OnChanges {
         this.chartData.section7.parts[0].value,
       ],
       borderColor: 'blue',
-      backgroundColor: 'rgb(128,128,128,0.6)',
+      backgroundColor: 'rgb(107,142,35,0.6)',
       fill: true
     });
 
@@ -194,7 +200,7 @@ export class ChartComponent implements OnInit, OnChanges {
         this.chartData.section7.parts[1].value,
       ],
       borderColor: 'blue',
-      backgroundColor: 'rgb(128,128,128,0.6)',
+      backgroundColor: 'rgb(107,142,35,0.6)',
       fill: true
     });
 
@@ -210,7 +216,7 @@ export class ChartComponent implements OnInit, OnChanges {
         this.chartData.section7.parts[2].value,
       ],
       borderColor: 'blue',
-      backgroundColor: 'rgb(128,128,128,0.6)',
+      backgroundColor: 'rgb(107,142,35,0.6)',
       fill: true
     });
 
@@ -226,7 +232,7 @@ export class ChartComponent implements OnInit, OnChanges {
         this.chartData.section7.parts[3].value,
       ],
       borderColor: 'blue',
-      backgroundColor: 'rgb(128,128,128,0.6)',
+      backgroundColor: 'rgb(107,142,35,0.6)',
       fill: true
     });
 
@@ -250,6 +256,7 @@ export class ChartComponent implements OnInit, OnChanges {
         }],
         yAxes: [{ stacked: true }]
       },
+      animation: this.getAnimationOptions(),
       legend: {
         display: true,
 
@@ -302,7 +309,7 @@ export class ChartComponent implements OnInit, OnChanges {
           label: '% de incumplimiento',
           data: [value2],
           borderColor: 'blue',
-          backgroundColor: 'rgb(128,128,128,0.6)',
+          backgroundColor: 'rgb(107,142,35,0.6)',
           fill: true
         }
         ],
