@@ -1,32 +1,22 @@
-<div class="col-12">
-  <div class="row" >
+<div class="container">
+  <div class="row">
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="col-12">
-      <div class="col-4"></div>
-      <mat-form-field class="col-4">
+      <div class="col"></div>
+      <mat-form-field class="col">
         <mat-select formControlName="selected" placeholder="Select one" width="100%">
           <mat-option *ngFor="let option of dropdownInfo" [value]="option.id">{{option.name}}</mat-option>
         </mat-select>
       </mat-form-field>
-      <button mat-button color="primary" [disabled]="isDisabled()" type="submit">Get graphics</button>
-      <div class="col-4"></div>
+      <div class="col">
+        <button mat-button mat-flat-button color="primary" [disabled]="isDisabled()" type="submit">Get graphics</button>
+      </div>
     </form>
   </div>
-
   <div class="row" *ngIf="!!chartInfo">
-    <mat-card class="col-md-6">
-      <app-chart [chartData]="chartInfo.keyProcessChart" [chartType]="types.radar"></app-chart>
-    </mat-card>
-    <mat-card class="col-md-6">
-      <app-chart [chartData]="chartInfo.strategicChart" [chartType]="types.radar"></app-chart>
-    </mat-card>
-    <mat-card class="col-md-6">
-      <app-chart [chartData]="chartInfo.supportProcessChart" [chartType]="types.radar"></app-chart>
-    </mat-card>
-    <mat-card class="col-12 col-md-6">
-      <app-chart [chartData]="chartInfo.organizationalMatureChart" [chartType]="types.hBar"></app-chart>
-    </mat-card>
-    <mat-card class="col-12">
-      <app-chart [chartData]="chartInfo.matureProfileChart" [chartType]="types.bar"></app-chart>
-    </mat-card>
+      <app-chart class="col-12" [chartData]="chartInfo.keyProcessChart" [chartType]="types.radar"></app-chart>
+      <app-chart class="col-12" [chartData]="chartInfo.strategicChart" [chartType]="types.radar"></app-chart>
+      <app-chart class="col-12" [chartData]="chartInfo.supportProcessChart" [chartType]="types.radar"></app-chart>
+      <app-chart class="col-12" [chartData]="chartInfo.organizationalMatureChart" [chartType]="types.hBar"></app-chart>
+      <app-chart class="col-12" [chartData]="chartInfo.matureProfileChart" [chartType]="types.bar"></app-chart>
   </div>
 </div>
