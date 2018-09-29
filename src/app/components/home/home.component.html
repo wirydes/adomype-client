@@ -3,12 +3,13 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="col-12">
       <div class="col"></div>
       <mat-form-field class="col">
-        <mat-select formControlName="selected" placeholder="Select one" width="100%">
+        <mat-select formControlName="selected" placeholder="Select one">
           <mat-option *ngFor="let option of dropdownInfo" [value]="option.id">{{option.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <div class="col">
-        <button mat-button mat-flat-button color="primary" [disabled]="isDisabled()" type="submit">Get graphics</button>
+        <button class="btn btn-outline-primary" [disabled]="isDisabled()" type="submit">
+          <i class="fas fa-chart-pie"></i> Get graphics</button>
       </div>
     </form>
   </div>
