@@ -131,7 +131,7 @@ export class ChartComponent implements OnInit, OnChanges {
             ctx.fillStyle = 'black';
             chart.getDatasetMeta(i).data.forEach((p, j) => {
               const value = this.data.datasets[i].data[j];
-              if (value !== 0) {
+              if (value !== 0 && value !== null) {
                 const precision = value === 100 ? 3 : 2;
                 ctx.fillText(value.toPrecision(precision) + '%', p._model.x, p._model.y + 20);
               }
