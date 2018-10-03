@@ -3,6 +3,7 @@ import { Chart } from 'chart.js';
 import * as chartTypes from '../../models/chart.type';
 import { RadarChartModel } from '../../models/radar.chart.model';
 import { ChartFieldModel } from '../../models/chart.field.model';
+import { ChartService } from '../../services/chart.service';
 
 @Component({
   selector: 'app-chart',
@@ -14,7 +15,7 @@ export class ChartComponent implements OnInit, OnChanges {
   @Input() chartType: string;
   @ViewChild('canvas') canvas: ElementRef;
   chart = [];
-  constructor() { }
+  constructor(private chartService: ChartService) { }
 
   ngOnInit() {
   }
@@ -23,9 +24,6 @@ export class ChartComponent implements OnInit, OnChanges {
     switch (this.chartType) {
       case chartTypes.radar:
         this.handleRadar();
-        break;
-      case chartTypes.bar:
-        this.handleBar();
         break;
       case chartTypes.hBar:
         this.handleHorizontalBar();
@@ -67,7 +65,7 @@ export class ChartComponent implements OnInit, OnChanges {
           max: 100
         }
       },
-      animation: this.getAnimationOptionsConfig()
+      animation: this.chartService.getAnimationOptionsConfig()
     };
   }
 
@@ -81,103 +79,6 @@ export class ChartComponent implements OnInit, OnChanges {
     return this.chartData.parts.map((element: ChartFieldModel) => {
       return element.value;
     });
-  }
-
-  handleBar() {
-    const options = this.getBarOptions();
-    const datasets = this.getBarDataSets();
-    const lables = this.getBarDataLabels();
-    this.chart = new Chart(this.canvas.nativeElement, {
-      type: 'bar',
-      data: {
-        labels: lables,
-        datasets: datasets,
-      },
-      options: options
-    });
-  }
-
-  getBarOptions() {
-    return {
-      scales: {
-        xAxes: [{
-        }],
-        yAxes: [{
-          ticks: {
-            min: 0,
-            max: 100
-          }
-        }]
-      },
-      legend: {
-        display: false
-      },
-      animation: this.getAnimationOptionsConfig()
-    };
-  }
-
-  getAnimationOptionsConfig() {
-    return {
-      duration: 500,
-      easing: 'easeOutQuart',
-      onComplete: function () {
-        const ctx = this.chart.ctx;
-        const chart = this;
-        ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontFamily, 'normal', Chart.defaults.global.defaultFontFamily);
-        ctx.textAlign = 'center';
-        ctx.fillStyle = 'black';
-        if (!!this.data) {
-          this.data.datasets.forEach((dataset, i) => {
-            ctx.fillStyle = 'black';
-            chart.getDatasetMeta(i).data.forEach((p, j) => {
-              const value = this.data.datasets[i].data[j];
-              if (value !== 0 && value !== null) {
-                const precision = value === 100 ? 3 : 2;
-                ctx.fillText(value.toPrecision(precision) + '%', p._model.x, p._model.y + 20);
-              }
-            });
-          });
-        }
-      }
-    };
-  }
-
-  getPercentage(parts) {
-    let result = 0;
-    let i = 0;
-    parts.forEach(element => {
-      result += element.value;
-      i++;
-    });
-
-    return result / i;
-  }
-
-  getBarDataLabels() {
-    const array = [];
-    const value1 = this.getPercentage(this.chartData.section1.parts);
-    const label1 = this.chartData.section1.name + ':' + value1.toPrecision(2) + '%';
-    array.push(label1);
-    const value2 = this.getPercentage(this.chartData.section2.parts);
-    const label2 = this.chartData.section2.name + ':' + value2.toPrecision(2);
-    array.push(label2);
-    const value3 = this.getPercentage(this.chartData.section3.parts);
-    const label3 = this.chartData.section3.name + ':' + value3.toPrecision(2);
-    array.push(label3);
-    const value4 = this.getPercentage(this.chartData.section4.parts);
-    const label4 = this.chartData.section4.name + ':' + value4.toPrecision(2);
-    array.push(label4);
-    const value5 = this.getPercentage(this.chartData.section5.parts);
-    const label5 = this.chartData.section5.name + ':' + value5.toPrecision(2);
-    array.push(label5);
-    const value6 = this.getPercentage(this.chartData.section6.parts);
-    const label6 = this.chartData.section6.name + ':' + value6.toPrecision(2);
-    array.push(label6);
-    const value7 = this.getPercentage(this.chartData.section7.parts);
-    const label7 = this.chartData.section7.name + ':' + value7.toPrecision(2);
-    array.push(label7);
-
-    return array;
   }
 
   getBarDataSets() {
@@ -292,7 +193,7 @@ export class ChartComponent implements OnInit, OnChanges {
         }],
         yAxes: [{ stacked: true }]
       },
-      animation: this.getAnimationOptionsConfig(),
+      animation: this.chartService.getAnimationOptionsConfig(),
       legend: {
         display: true,
 
