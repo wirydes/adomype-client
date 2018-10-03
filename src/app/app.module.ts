@@ -18,13 +18,15 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatureProfileChartComponent } from './components/mature-profie-chart/mature-profile-chart.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ChartComponent
+    ChartComponent,
+    MatureProfileChartComponent
   ],
   imports: [
     BrowserModule,

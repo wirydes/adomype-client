@@ -1,0 +1,62 @@
+<div class="">
+
+</div>
+<canvas #canvas>{{chart}}</canvas>
+<table style="margin-left:35px">
+    <tbody *ngIf="sections.length !== 0">
+        <tr>
+            <td class="text-center" width="200px" *ngFor="let section of sections">
+                {{section.label}}
+            </td>
+        </tr>
+        <tr >
+            <td class="text-center" *ngFor="let section of sections" [style]="getColor(section.value)">
+                {{section.value + '%'}}
+            </td>
+        </tr>
+    </tbody>
+</table>
+<table style="margin-left:35px">
+    <tbody *ngIf="sections.length !== 0">
+        <tr>
+            <td class="text-center" width="200px">
+                Proceso estrategico
+            </td>
+            <td width="200px"></td>
+            <td width="200px"></td>
+            <td class="text-center" width="200px">
+                Proceso clave
+            </td>
+            <td width="200px"></td>
+            <td width="200px"></td>
+            <td class="text-center" width="200px">
+                Proceso soporte
+            </td>
+        </tr>
+        <tr >
+            <td class="text-center border border-dark" [style]="getColor(process.strategicProcess)">
+                {{process.strategicProcess + '%'}}
+            </td>
+            <td class="border-top border-bottom border-dark" width="200px" [style]="getColor(process.keyProcess)"></td>
+            <td class="border-top border-bottom border-dark" width="200px" [style]="getColor(process.keyProcess)"></td>
+            <td class="text-center border-top border-bottom border-dark" [style]="getColor(process.keyProcess)">
+                {{process.keyProcess + '%'}}
+            </td>
+            <td class="border-top border-bottom border-dark" width="200px" [style]="getColor(process.keyProcess)"></td>
+            <td class="border-top border-bottom border-dark" width="200px" [style]="getColor(process.keyProcess)"></td>
+            <td class="text-center border border-dark" [style]="getColor(process.supportProcess)">
+                {{process.supportProcess + '%'}}
+            </td>
+        </tr>
+    </tbody>
+</table>
+<!-- <div class="row" style="margin-left:35px">
+    <div class="col-1 text-center">Proceso estrategico</div>
+    <div class="col-10 text-center">Proceso clave</div>
+    <div class="col-1 text-center">Proceso soporte</div>
+</div>
+<div class="row" style="margin-left:35px">
+    <div class="col-1 text-center border border-dark" [style]="getColor(process.strategicProcess)">{{process.strategicProcess}}</div>
+    <div class="col-10 text-center border border-dark" [style]="getColor(process.keyProcess)">{{process.keyProcess}}</div>
+    <div class="col-1 text-center border border-dark" [style]="getColor(process.supportProcess)">{{process.supportProcess}}</div>
+</div> -->
