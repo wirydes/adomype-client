@@ -1,55 +1,135 @@
-<div class="">
-
+<div class="container" >
+    <div class="row">
+            <ul>
+                    <li>
+                        Analisys del entorno
+                    </li>
+                    <li>
+                        Toma decisiones nivel organizacional
+                    </li>
+                    <li>
+                        Monitoreo control nivel organizacional
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        Planeacion de procesos
+                    </li>
+                    <li>
+                        Formalizacion de procesos
+                    </li>
+                    <li>
+                        Seguimiento control operativo
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        Resultado compras
+                    </li>
+                    <li>
+                        Seleccion de nuevos proveedores
+                    </li>
+                    <li>
+                        Evaluacion desempeño proveedores actuales
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        Resultado proceso productivo
+                    </li>
+                    <li>
+                        Procesos para la entrega de valor
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        Definicion de valor
+                    </li>
+                    <li>
+                        Medicion de la satisfaccion del cliente
+                    </li>
+                </ul>
+            
+                <ul>
+                    <li>
+                        Control de inventarios
+                    </li>
+                    <li>
+                        Almacenamiento
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        Personal
+                    </li>
+                    <li>
+                        Mantenimiento de infraestructura y equipo
+                    </li>
+                    <li>
+                        Tecnologia
+                    </li>
+                    <li>
+                        Apoyo a la gestion financiera
+                    </li>
+            
+                </ul>
+    </div>
+    
 </div>
-<canvas #canvas>{{chart}}</canvas>
-<table style="margin-left:35px">
-    <tbody *ngIf="sections.length !== 0">
-        <tr>
-            <td class="text-center" width="200px" *ngFor="let section of sections">
-                {{section.label}}
-            </td>
-        </tr>
-        <tr >
-            <td class="text-center" *ngFor="let section of sections" [style]="getColor(section.value)">
-                {{section.value + '%'}}
-            </td>
-        </tr>
-    </tbody>
-</table>
-<table style="margin-left:35px">
-    <tbody *ngIf="sections.length !== 0">
-        <tr>
-            <td class="text-center" width="200px">
-                Proceso estrategico
-            </td>
-            <td width="200px"></td>
-            <td width="200px"></td>
-            <td class="text-center" width="200px">
-                Proceso clave
-            </td>
-            <td width="200px"></td>
-            <td width="200px"></td>
-            <td class="text-center" width="200px">
-                Proceso soporte
-            </td>
-        </tr>
-        <tr >
-            <td class="text-center border border-dark" [style]="getColor(process.strategicProcess)">
-                {{process.strategicProcess + '%'}}
-            </td>
-            <td class="border-top border-bottom border-dark" width="200px" [style]="getColor(process.keyProcess)"></td>
-            <td class="border-top border-bottom border-dark" width="200px" [style]="getColor(process.keyProcess)"></td>
-            <td class="text-center border-top border-bottom border-dark" [style]="getColor(process.keyProcess)">
-                {{process.keyProcess + '%'}}
-            </td>
-            <td class="border-top border-bottom border-dark" width="200px" [style]="getColor(process.keyProcess)"></td>
-            <td class="border-top border-bottom border-dark" width="200px" [style]="getColor(process.keyProcess)"></td>
-            <td class="text-center border border-dark" [style]="getColor(process.supportProcess)">
-                {{process.supportProcess + '%'}}
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="container">
+    <canvas #canvas>{{chart}}</canvas>
+    <table style="margin-left:35px">
+        <tbody *ngIf="sections.length !== 0">
+            <tr>
+                <td class="text-center" width="200px" *ngFor="let section of sections">
+                    {{section.label}}
+                </td>
+            </tr>
+            <tr>
+                <td class="text-center" *ngFor="let section of sections" [style]="getColor(section.value)">
+                    {{section.value + '%'}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table style="margin-left:35px">
+        <tbody *ngIf="sections.length !== 0">
+            <tr>
+                <td class="text-center" width="200px">
+                    Proceso estrategico
+                </td>
+                <td width="200px"></td>
+                <td width="200px"></td>
+                <td class="text-center" width="200px">
+                    Proceso clave
+                </td>
+                <td width="200px"></td>
+                <td width="200px"></td>
+                <td class="text-center" width="200px">
+                    Proceso soporte
+                </td>
+            </tr>
+            <tr>
+                <td class="text-center border border-dark" [style]="getColor(process.strategicProcess)">
+                    {{process.strategicProcess + '%'}}
+                </td>
+                <td class="border-top border-bottom border-dark" width="200px" [style]="getColor(process.keyProcess)"></td>
+                <td class="border-top border-bottom border-dark" width="200px" [style]="getColor(process.keyProcess)"></td>
+                <td class="text-center border-top border-bottom border-dark" [style]="getColor(process.keyProcess)">
+                    {{process.keyProcess + '%'}}
+                </td>
+                <td class="border-top border-bottom border-dark" width="200px" [style]="getColor(process.keyProcess)"></td>
+                <td class="border-top border-bottom border-dark" width="200px" [style]="getColor(process.keyProcess)"></td>
+                <td class="text-center border border-dark" [style]="getColor(process.supportProcess)">
+                    {{process.supportProcess + '%'}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+</div>
+
 <!-- <div class="row" style="margin-left:35px">
     <div class="col-1 text-center">Proceso estrategico</div>
     <div class="col-10 text-center">Proceso clave</div>

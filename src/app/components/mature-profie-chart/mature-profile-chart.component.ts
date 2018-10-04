@@ -14,7 +14,7 @@ import { ProcessAdomype } from '../../models/process.adomype.model';
 export class MatureProfileChartComponent implements OnInit, OnChanges {
   @Input() chartData: MatureProfileChartModel;
   @ViewChild('canvas') canvas: ElementRef;
-  chart = [];
+  chart: Chart;
   sections: { label: string, value: string }[] = [];
   process = new ProcessAdomype();
   constructor(private chartService: ChartService, private sanitizer: DomSanitizer) { }
@@ -36,6 +36,7 @@ export class MatureProfileChartComponent implements OnInit, OnChanges {
       },
       options: options
     });
+    this.chart.generateLegend();
   }
 
   getProcessValues() {
@@ -51,8 +52,23 @@ export class MatureProfileChartComponent implements OnInit, OnChanges {
     this.process.keyProcess = keyProcess.toPrecision(precision);
   }
 
+  getLegend(chart) {
+    const text = [];
+    text.push('<ul class="' + chart.id + '-legend">');
+    for (let i = 0; i < chart.data.datasets.length; i++) {
+      text.push('<li>');
+      if (chart.data.datasets[i].label) {
+        text.push(chart.data.datasets[i].label);
+      }
+      text.push('</li>');
+    }
+    text.push('</ul>');
+    return text.join('');
+  }
+
   getBarOptions() {
     return {
+      legendCallback: this.getLegend,
       scales: {
         xAxes: [{
           ticks: {
@@ -69,7 +85,8 @@ export class MatureProfileChartComponent implements OnInit, OnChanges {
       legend: {
         display: false
       },
-      animation: this.chartService.getAnimationOptionsConfig()
+      animation: this.chartService.getAnimationOptionsConfig(),
+      tooltips: { enabled: false }
     };
   }
 
