@@ -13,11 +13,12 @@
       </div>
     </form>
   </div>
-  <div class="row" *ngIf="!!chartInfo">
-      <app-chart class="col-12" [chartData]="chartInfo.keyProcessChart" [chartType]="types.radar"></app-chart>
-      <app-chart class="col-12" [chartData]="chartInfo.strategicChart" [chartType]="types.radar"></app-chart>
-      <app-chart class="col-12" [chartData]="chartInfo.supportProcessChart" [chartType]="types.radar"></app-chart>
-      <app-chart class="col-12" [chartData]="chartInfo.organizationalMatureChart" [chartType]="types.hBar"></app-chart>
-      <app-mature-profile-chart class="col-12" [chartData]="chartInfo.matureProfileChart"></app-mature-profile-chart>
-  </div>
+</div>
+
+<div class="row" *ngIf="!!chartInfo">
+  <app-chart class="col-12" [chartData]="chartInfo.keyProcessChart" [chartType]="types.radar"></app-chart>
+  <app-chart class="col-12" [chartData]="chartInfo.strategicChart" [chartType]="types.radar"></app-chart>
+  <app-chart class="col-12" [chartData]="chartInfo.supportProcessChart" [chartType]="types.radar"></app-chart>
+  <app-chart class="col-12" [chartData]="chartInfo.organizationalMatureChart" [chartType]="types.hBar"></app-chart>
+  <app-mature-profile-chart class="col-12" [chartData]="chartInfo.matureProfileChart"></app-mature-profile-chart>
 </div>
