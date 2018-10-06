@@ -1,21 +1,20 @@
-<div class="container">
+<div class="container" *ngIf="parts.length !== 0">
     <div class="row">
-        <div class="col-10"></div>
+        <div class="col-12">
+            <ul *ngFor="let part of parts">
+                <li class="mr-1" *ngFor="let display of part.array">
+                    {{display.label}}
+                </li>
+            </ul>
+        </div>
+        <div class="col-12">
+            <ul *ngFor="let part of parts">
+                <li [style]="getColor(display.value)" class="text-center border border-dark ml-1" *ngFor="let display of part.array">
+                    {{display.value}}
+                </li>
+            </ul>
+        </div>
     </div>
-    <table style="margin-left:35px">
-        <tbody *ngIf="parts.length !== 0">
-            <tr>
-                <td class="text-center mr-1" width="47px" *ngFor="let part of parts">
-                    {{part.label}}
-                </td>
-            </tr>
-            <tr>
-                <td [style]="getColor(part.value)" class="text-center border border-dark mr-1" width="47px" *ngFor="let part of parts">
-                    {{part.value}}
-                </td>
-            </tr>
-        </tbody>
-    </table>
 </div>
 <div class="container">
     <div class="row">
@@ -75,7 +74,7 @@
             <div class="col-12 text-nowrap p-0" *ngFor="let name of partsNames">
                 {{name}}
             </div>
-            <h4 class="col-12 text-nowrap" style="margin-top:5%"> Nivel de madurez </h4>
+            <h4 class="text-nowrap" style="margin-top:5%">Nivel de madurez </h4>
             <div class="col-12 text-center p-0" [style]="getColor('100')">85-100 maduro</div>
             <div class="col-12 text-center p-0" [style]="getColor('84')">62-84 En desarrollo</div>
             <div class="col-12 text-center p-0" [style]="getColor('61')">33-61 Artesanal</div>
@@ -83,18 +82,4 @@
 
         </div>
     </div>
-
 </div>
-<div>
-</div>
-
-<!-- <div class="row" style="margin-left:35px">
-    <div class="col-1 text-center">Proceso estrategico</div>
-    <div class="col-10 text-center">Proceso clave</div>
-    <div class="col-1 text-center">Proceso soporte</div>
-</div>
-<div class="row" style="margin-left:35px">
-    <div class="col-1 text-center border border-dark" [style]="getColor(process.strategicProcess)">{{process.strategicProcess}}</div>
-    <div class="col-10 text-center border border-dark" [style]="getColor(process.keyProcess)">{{process.keyProcess}}</div>
-    <div class="col-1 text-center border border-dark" [style]="getColor(process.supportProcess)">{{process.supportProcess}}</div>
-</div> -->

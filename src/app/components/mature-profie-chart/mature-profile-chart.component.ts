@@ -7,6 +7,7 @@ import { ChartService } from '../../services/chart.service';
 import { ProcessAdomype } from '../../models/process.adomype.model';
 import { ChartFieldModel } from '../../models/chart.field.model';
 import { DisplayInfoModel } from '../../models/display.info.model';
+import { ArrayDisplayInfoModel } from '../../models/array.display.info.model';
 @Component({
   selector: 'app-mature-profile-chart',
   templateUrl: './mature-profile-chart.component.html',
@@ -18,7 +19,7 @@ export class MatureProfileChartComponent implements OnInit, OnChanges {
   chart: Chart;
   sections: DisplayInfoModel[] = [];
   process = new ProcessAdomype();
-  parts: DisplayInfoModel[] = [];
+  parts: ArrayDisplayInfoModel[] = [];
   partsNames: string[] = [];
   constructor(private chartService: ChartService, private sanitizer: DomSanitizer) { }
 
@@ -53,12 +54,14 @@ export class MatureProfileChartComponent implements OnInit, OnChanges {
   }
 
   setParts(array: ChartFieldModel[], part: string) {
+    const result: DisplayInfoModel[] = [];
     array.forEach((item, i) => {
       const precision = this.chartService.getPrecision(item.value);
       const partIndex = part + '.' + (i + 1);
       this.partsNames.push(partIndex + ' ' + item.label);
-      this.parts.push(this.getDisplayInfo(partIndex, item.value.toPrecision(precision)));
+      result.push(this.getDisplayInfo(partIndex, item.value.toPrecision(precision)));
     });
+    this.parts.push({array: result});
   }
 
   getDisplayInfo(label: string, value: string): DisplayInfoModel {
