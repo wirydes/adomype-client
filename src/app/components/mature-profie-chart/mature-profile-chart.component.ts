@@ -6,7 +6,7 @@ import { ChartService } from '../../services/chart.service';
 
 import { ProcessAdomype } from '../../models/process.adomype.model';
 import { ChartFieldModel } from '../../models/chart.field.model';
-
+import { DisplayInfoModel } from '../../models/display.info.model';
 @Component({
   selector: 'app-mature-profile-chart',
   templateUrl: './mature-profile-chart.component.html',
@@ -16,9 +16,10 @@ export class MatureProfileChartComponent implements OnInit, OnChanges {
   @Input() chartData: MatureProfileChartModel;
   @ViewChild('canvas') canvas: ElementRef;
   chart: Chart;
-  sections: { label: string, value: string }[] = [];
+  sections: DisplayInfoModel[] = [];
   process = new ProcessAdomype();
-  parts: string[] = [];
+  parts: DisplayInfoModel[] = [];
+  partsNames: string[] = [];
   constructor(private chartService: ChartService, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
@@ -39,24 +40,33 @@ export class MatureProfileChartComponent implements OnInit, OnChanges {
       },
       options: options
     });
-    this.chart.generateLegend();
   }
 
   getPartsName() {
-   this.setParts(this.chartData.section1.parts);
-   this.setParts(this.chartData.section2.parts);
-   this.setParts(this.chartData.section3.parts);
-   this.setParts(this.chartData.section4.parts);
-   this.setParts(this.chartData.section5.parts);
-   this.setParts(this.chartData.section6.parts);
-   this.setParts(this.chartData.section7.parts);
+   this.setParts(this.chartData.section1.parts, '1');
+   this.setParts(this.chartData.section2.parts, '2');
+   this.setParts(this.chartData.section3.parts, '3');
+   this.setParts(this.chartData.section4.parts, '4');
+   this.setParts(this.chartData.section5.parts, '5');
+   this.setParts(this.chartData.section6.parts, '6');
+   this.setParts(this.chartData.section7.parts, '7');
   }
 
-  setParts(array: ChartFieldModel[]) {
-    array.forEach((item) => {
+  setParts(array: ChartFieldModel[], part: string) {
+    array.forEach((item, i) => {
       const precision = this.chartService.getPrecision(item.value);
-      this.parts.push(item.value.toPrecision(precision));
+      const partIndex = part + '.' + (i + 1);
+      this.partsNames.push(partIndex + ' ' + item.label);
+      this.parts.push(this.getDisplayInfo(partIndex, item.value.toPrecision(precision)));
     });
+  }
+
+  getDisplayInfo(label: string, value: string): DisplayInfoModel {
+    const model = new DisplayInfoModel();
+    model.label = label;
+    model.value = value;
+
+    return model;
   }
 
   getProcessValues() {
@@ -72,23 +82,8 @@ export class MatureProfileChartComponent implements OnInit, OnChanges {
     this.process.keyProcess = keyProcess.toPrecision(precision);
   }
 
-  getLegend(chart) {
-    const text = [];
-    text.push('<ul class="' + chart.id + '-legend">');
-    for (let i = 0; i < chart.data.datasets.length; i++) {
-      text.push('<li>');
-      if (chart.data.datasets[i].label) {
-        text.push(chart.data.datasets[i].label);
-      }
-      text.push('</li>');
-    }
-    text.push('</ul>');
-    return text.join('');
-  }
-
   getBarOptions() {
     return {
-      legendCallback: this.getLegend,
       scales: {
         xAxes: [{
           ticks: {
@@ -194,13 +189,13 @@ export class MatureProfileChartComponent implements OnInit, OnChanges {
   }
 
   getSectionValues(labels: string[]) {
-    this.sections.push({ label: labels[0], value: this.chartService.getPercentage(this.chartData.section1.parts) });
-    this.sections.push({ label: labels[1], value: this.chartService.getPercentage(this.chartData.section2.parts) });
-    this.sections.push({ label: labels[2], value: this.chartService.getPercentage(this.chartData.section3.parts) });
-    this.sections.push({ label: labels[3], value: this.chartService.getPercentage(this.chartData.section4.parts) });
-    this.sections.push({ label: labels[4], value: this.chartService.getPercentage(this.chartData.section5.parts) });
-    this.sections.push({ label: labels[5], value: this.chartService.getPercentage(this.chartData.section6.parts) });
-    this.sections.push({ label: labels[6], value: this.chartService.getPercentage(this.chartData.section7.parts) });
+    this.sections.push({ label: '1 ' + labels[0], value: this.chartService.getPercentage(this.chartData.section1.parts) });
+    this.sections.push({ label: '2 ' + labels[1], value: this.chartService.getPercentage(this.chartData.section2.parts) });
+    this.sections.push({ label: '3 ' + labels[2], value: this.chartService.getPercentage(this.chartData.section3.parts) });
+    this.sections.push({ label: '4 ' + labels[3], value: this.chartService.getPercentage(this.chartData.section4.parts) });
+    this.sections.push({ label: '5 ' + labels[4], value: this.chartService.getPercentage(this.chartData.section5.parts) });
+    this.sections.push({ label: '6 ' + labels[5], value: this.chartService.getPercentage(this.chartData.section6.parts) });
+    this.sections.push({ label: '7 ' + labels[6], value: this.chartService.getPercentage(this.chartData.section7.parts) });
   }
 
   getColor(sectionValue: string) {

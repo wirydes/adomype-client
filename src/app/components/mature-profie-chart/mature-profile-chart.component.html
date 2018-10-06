@@ -5,8 +5,13 @@
     <table style="margin-left:35px">
         <tbody *ngIf="parts.length !== 0">
             <tr>
-                <td [style]="getColor(part)" class="text-center mr-1" width="47px" *ngFor="let part of parts">
-                    {{part}}
+                <td class="text-center mr-1" width="47px" *ngFor="let part of parts">
+                    {{part.label}}
+                </td>
+            </tr>
+            <tr>
+                <td [style]="getColor(part.value)" class="text-center border border-dark mr-1" width="47px" *ngFor="let part of parts">
+                    {{part.value}}
                 </td>
             </tr>
         </tbody>
@@ -19,12 +24,12 @@
             <table style="margin-left:35px">
                 <tbody *ngIf="sections.length !== 0">
                     <tr>
-                        <td class="text-center" width="200px" *ngFor="let section of sections">
+                        <td class="text-center border border-dark" width="200px" *ngFor="let section of sections">
                             {{section.label}}
                         </td>
                     </tr>
                     <tr>
-                        <td class="text-center" *ngFor="let section of sections" [style]="getColor(section.value)">
+                        <td class="text-center border border-dark" *ngFor="let section of sections" [style]="getColor(section.value)">
                             {{section.value + '%'}}
                         </td>
                     </tr>
@@ -33,17 +38,17 @@
             <table style="margin-left:35px">
                 <tbody *ngIf="sections.length !== 0">
                     <tr>
-                        <td class="text-center" width="200px">
+                        <td class="text-center border border-dark" width="200px">
                             Proceso estrategico
                         </td>
-                        <td width="200px"></td>
-                        <td width="200px"></td>
-                        <td class="text-center" width="200px">
+                        <td width="200px" class="border-top border-bottom border-dark"></td>
+                        <td width="200px" class="border-top border-bottom border-dark"></td>
+                        <td class="text-center border-top border-bottom border-dark" width="200px">
                             Proceso clave
                         </td>
-                        <td width="200px"></td>
-                        <td width="200px"></td>
-                        <td class="text-center" width="200px">
+                        <td width="200px" class="border-top border-bottom border-dark"></td>
+                        <td width="200px" class="border-top border-bottom border-dark"></td>
+                        <td class="text-center border border-dark" width="200px">
                             Proceso soporte
                         </td>
                     </tr>
@@ -66,11 +71,16 @@
             </table>
         </div>
         <div class="col-2">
-            <div class="col-12 text-center"> % </div>
+            <h4 class="text-nowrap">Secciones de proceso:</h4>
+            <div class="col-12 text-nowrap p-0" *ngFor="let name of partsNames">
+                {{name}}
+            </div>
+            <h4 class="col-12 text-nowrap" style="margin-top:5%"> Nivel de madurez </h4>
             <div class="col-12 text-center p-0" [style]="getColor('100')">85-100 maduro</div>
             <div class="col-12 text-center p-0" [style]="getColor('84')">62-84 En desarrollo</div>
             <div class="col-12 text-center p-0" [style]="getColor('61')">33-61 Artesanal</div>
             <div class="col-12 text-center p-0" [style]="getColor('32')">0-32 Incipiente</div>
+
         </div>
     </div>
 
