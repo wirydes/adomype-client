@@ -35,9 +35,11 @@
     margin-left: 350px
 }
 ul{
-
-    max-width: 80px;
-    margin-right: 6%;
-    margin-left: 1%;
-
+    margin-left: 2%;
+    list-style-type: none;
+    display: inline-flex;
+}
+li{
+    width: auto;
+    float: left;
 }
