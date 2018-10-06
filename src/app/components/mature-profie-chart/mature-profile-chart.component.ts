@@ -5,6 +5,7 @@ import { MatureProfileChartModel } from '../../models/mature.profile.chart.model
 import { ChartService } from '../../services/chart.service';
 
 import { ProcessAdomype } from '../../models/process.adomype.model';
+import { ChartFieldModel } from '../../models/chart.field.model';
 
 @Component({
   selector: 'app-mature-profile-chart',
@@ -17,12 +18,14 @@ export class MatureProfileChartComponent implements OnInit, OnChanges {
   chart: Chart;
   sections: { label: string, value: string }[] = [];
   process = new ProcessAdomype();
+  parts: string[] = [];
   constructor(private chartService: ChartService, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
   }
 
   handleBar() {
+    this.getPartsName();
     this.getProcessValues();
     const options = this.getBarOptions();
     const datasets = this.getBarDataSets();
@@ -37,6 +40,23 @@ export class MatureProfileChartComponent implements OnInit, OnChanges {
       options: options
     });
     this.chart.generateLegend();
+  }
+
+  getPartsName() {
+   this.setParts(this.chartData.section1.parts);
+   this.setParts(this.chartData.section2.parts);
+   this.setParts(this.chartData.section3.parts);
+   this.setParts(this.chartData.section4.parts);
+   this.setParts(this.chartData.section5.parts);
+   this.setParts(this.chartData.section6.parts);
+   this.setParts(this.chartData.section7.parts);
+  }
+
+  setParts(array: ChartFieldModel[]) {
+    array.forEach((item) => {
+      const precision = this.chartService.getPrecision(item.value);
+      this.parts.push(item.value.toPrecision(precision));
+    });
   }
 
   getProcessValues() {
@@ -186,21 +206,19 @@ export class MatureProfileChartComponent implements OnInit, OnChanges {
   getColor(sectionValue: string) {
     const value = parseFloat(sectionValue);
 
-    if (value >= 84) {
+    if (value > 84) {
       return this.sanitizer.bypassSecurityTrustStyle('background-color: green;');
     }
 
-    if (value >= 61) {
+    if (value > 61) {
       return this.sanitizer.bypassSecurityTrustStyle('background-color: yellow;');
     }
 
-    if (value >= 32) {
+    if (value > 32) {
       return this.sanitizer.bypassSecurityTrustStyle('background-color: orange;');
     }
 
-    if (value >= 0) {
-      return this.sanitizer.bypassSecurityTrustStyle('background-color: red;');
-    }
+    return this.sanitizer.bypassSecurityTrustStyle('background-color: red;');
   }
 
   ngOnChanges(changes: SimpleChanges) {
