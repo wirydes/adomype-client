@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Chart } from 'chart.js';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChartService {
 
-  constructor() { }
+  constructor(private sanitizer: DomSanitizer) { }
 
   getPercentage(parts): string {
     let summary = 0;
@@ -49,5 +50,39 @@ export class ChartService {
         }
       }
     };
+  }
+
+  getColor(sectionValue: string) {
+    const value = parseFloat(sectionValue);
+
+    if (value > 84) {
+      return this.sanitizer.bypassSecurityTrustStyle('background-color: green;');
+    }
+
+    if (value > 61) {
+      return this.sanitizer.bypassSecurityTrustStyle('background-color: yellow;');
+    }
+
+    if (value > 32) {
+      return this.sanitizer.bypassSecurityTrustStyle('background-color: orange;');
+    }
+
+    return this.sanitizer.bypassSecurityTrustStyle('background-color: red;');
+  }
+
+  getMaturePercentage(value: number) {
+    if (value > 84) {
+      return 'Maduro';
+    }
+
+    if (value > 61) {
+      return 'En desarrollo';
+    }
+
+    if (value > 32) {
+      return 'Artesanal';
+    }
+
+    return 'Incipiente';
   }
 }
