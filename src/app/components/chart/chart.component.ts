@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, ViewChild, ElementRef } from '@angular/core';
 import { Chart } from 'chart.js';
 import * as chartTypes from '../../models/chart.type';
-import { RadarChartModel } from '../../models/radar.chart.model';
 import { ChartFieldModel } from '../../models/chart.field.model';
 import { ChartService } from '../../services/chart.service';
+import { ChartRowInfoModel } from 'src/app/models/chart.row.info.model';
 
 @Component({
   selector: 'app-chart',
@@ -13,8 +13,12 @@ import { ChartService } from '../../services/chart.service';
 export class ChartComponent implements OnInit, OnChanges {
   @Input() chartData: any;
   @Input() chartType: string;
+  @Input() title: string;
   @ViewChild('canvas') canvas: ElementRef;
   chart = [];
+  rows: ChartRowInfoModel[] = [];
+  resume = 0;
+  resumeLabel = '';
   constructor(private chartService: ChartService) { }
 
   ngOnInit() {
@@ -33,9 +37,25 @@ export class ChartComponent implements OnInit, OnChanges {
     }
   }
 
+  fillTable(labels: string[], values: number[]) {
+    const length = values.length;
+    for (let i = 0; i < length; i++) {
+      const row = {
+        label: labels[i],
+        value: values[i]
+      };
+      this.resume += values[i];
+      this.rows.push(row);
+    }
+    this.resume = this.resume / (length + 1);
+    const precision = this.chartService.getPrecision(this.resume);
+    this.resumeLabel = this.resume.toPrecision(precision);
+  }
+
   handleRadar() {
     const labels = this.getRadarLabels();
     const values = this.getRadarValues();
+    this.fillTable(labels, values);
     const options = this.getRadarOptions();
     this.chart = new Chart(this.canvas.nativeElement, {
       type: 'radar',
@@ -249,6 +269,10 @@ export class ChartComponent implements OnInit, OnChanges {
     if (!!changes.chartData.currentValue) {
       this.handleData();
     }
+  }
+
+  getColor(sectionValue: string) {
+    return this.chartService.getColor(sectionValue);
   }
 
 

@@ -1,1 +1,33 @@
-<canvas #canvas>{{chart}}</canvas>
+<div class="container">
+    <div class="row">
+        <div class="col-10">
+            <canvas class="col-12" #canvas>{{chart}}</canvas>
+            <table *ngIf="rows.length > 0" style="margin-left: 15%;">
+                <tbody>
+                    <tr>
+                        <th class="border border-dark">{{title}}</th>
+                        <th class="border border-dark"> Porcentaje de cumplimiento</th>
+                        <th class="border border-dark">Nivel de madurez</th>
+                    </tr>
+                    <tr *ngFor="let row of rows">
+                        <td class="border border-dark">{{row.label}}</td>
+                        <td class="border border-dark text-center">{{row.value}}%</td>
+                        <td class="border border-dark text-center" [style]="getColor('' + row.value)">{{chartService.getMaturePercentage(row.value)}}</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-dark font-weight-bold">Resumen</td>
+                        <td class="border border-dark text-center">{{resumeLabel}}%</td>
+                        <td class="border border-dark text-center" [style]="getColor(resumeLabel)">{{chartService.getMaturePercentage(resume)}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-2">
+            <h4 class="text-nowrap" style="margin-top:5%">Nivel de madurez </h4>
+            <div class="col-12 text-center p-0" [style]="getColor('100')">85-100 maduro</div>
+            <div class="col-12 text-center p-0" [style]="getColor('84')">62-84 En desarrollo</div>
+            <div class="col-12 text-center p-0" [style]="getColor('61')">33-61 Artesanal</div>
+            <div class="col-12 text-center p-0" [style]="getColor('32')">0-32 Incipiente</div>
+        </div>
+    </div>
+</div>

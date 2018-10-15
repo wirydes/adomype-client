@@ -6,7 +6,9 @@ import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ChartsConfigModel } from '../../models/charts.config.model';
 import * as chartTypes from '../../models/chart.type';
-
+const titleKeyProcess = 'Situacion actual de los procesos claves';
+const titleStrategicProces = 'Situacion actual de los procesos estrategicos';
+const titleSupportProcess = 'Gestionar Recursos';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -17,7 +19,9 @@ export class HomeComponent extends BaseComponent implements OnInit {
   dropdownInfo: SurveyDropDownModel[] = [];
   form: FormGroup;
   chartInfo: ChartsConfigModel;
-
+  keyProcess = titleKeyProcess;
+  supportProcess = titleSupportProcess;
+  strategicProcess = titleStrategicProces;
   constructor(private graphicsService: GraphicsService, private toastrService: ToastrService, private fb: FormBuilder) {
     super();
     this.form = this.fb.group({
