@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, ViewChild, ElementRef } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { Chart } from 'chart.js';
 import { MatureProfileChartModel } from '../../models/mature.profile.chart.model';
 import { ChartService } from '../../services/chart.service';
@@ -21,7 +20,7 @@ export class MatureProfileChartComponent implements OnInit, OnChanges {
   process = new ProcessAdomype();
   parts: ArrayDisplayInfoModel[] = [];
   partsNames: string[] = [];
-  constructor(private chartService: ChartService, private sanitizer: DomSanitizer) { }
+  constructor(private chartService: ChartService) { }
 
   ngOnInit() {
   }
@@ -202,21 +201,7 @@ export class MatureProfileChartComponent implements OnInit, OnChanges {
   }
 
   getColor(sectionValue: string) {
-    const value = parseFloat(sectionValue);
-
-    if (value > 84) {
-      return this.sanitizer.bypassSecurityTrustStyle('background-color: green;');
-    }
-
-    if (value > 61) {
-      return this.sanitizer.bypassSecurityTrustStyle('background-color: yellow;');
-    }
-
-    if (value > 32) {
-      return this.sanitizer.bypassSecurityTrustStyle('background-color: orange;');
-    }
-
-    return this.sanitizer.bypassSecurityTrustStyle('background-color: red;');
+    return this.chartService.getColor(sectionValue);
   }
 
   ngOnChanges(changes: SimpleChanges) {
