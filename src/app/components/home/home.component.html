@@ -18,8 +18,7 @@
 <div class="row" *ngIf="!!chartInfo">
   <h2 class="col-12 text-center">PROCESOS CLAVE</h2>
   <hr />
-  <app-chart class="col-12" [chartData]="chartInfo.keyProcessChart" [chartType]="types.radar" 
-  [title]="keyProcess"></app-chart>
+  <app-key-process-chart class="col-12" [chartData]="chartInfo.matureProfileChart"></app-key-process-chart>
   <h2 class="col-12 text-center">PROCESOS ESTRATEGICOS</h2>
   <hr />
   <app-chart class="col-12" [chartData]="chartInfo.strategicChart" [chartType]="types.radar"
@@ -30,8 +29,7 @@
   [title]="supportProcess"></app-chart>
   <h2 class="col-12 text-center">NIVEL DE MADUREZ ORGANIZACIONAL</h2>
   <hr />
-  <app-chart class="col-12" [chartData]="chartInfo.organizationalMatureChart" [chartType]="types.hBar"
-  [title]="''"></app-chart>
+  <app-chart class="col-12" [chartData]="chartInfo.organizationalMatureChart" [chartType]="types.hBar" [title]="''"></app-chart>
   <h2 class="col-12 text-center">PERFIL DE MADUREZ DE LOS PROCESOS ORGANIZACIONALES</h2>
   <hr />
   <app-mature-profile-chart class="col-12" [chartData]="chartInfo.matureProfileChart"></app-mature-profile-chart>

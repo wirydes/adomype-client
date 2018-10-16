@@ -3,7 +3,6 @@ import { OrganizationalMatureChartModel } from './organizational.mature.chart.mo
 import { MatureProfileChartModel } from './mature.profile.chart.model';
 
 export class ChartsConfigModel {
-    keyProcessChart: RadarChartModel;
     strategicChart: RadarChartModel;
     supportProcessChart: RadarChartModel;
     organizationalMatureChart: OrganizationalMatureChartModel;

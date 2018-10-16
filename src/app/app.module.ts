@@ -19,6 +19,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatureProfileChartComponent } from './components/mature-profie-chart/mature-profile-chart.component';
+import { KeyProcessChartComponent } from './components/key-process-chart/key-process-chart.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { MatureProfileChartComponent } from './components/mature-profie-chart/ma
     AppComponent,
     HomeComponent,
     ChartComponent,
-    MatureProfileChartComponent
+    MatureProfileChartComponent,
+    KeyProcessChartComponent
   ],
   imports: [
     BrowserModule,
