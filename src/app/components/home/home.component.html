@@ -19,7 +19,7 @@
   <h2 class="col-12 text-center">PROCESOS CLAVE</h2>
   <hr />
   <app-key-process-chart class="col-12" [chartData]="chartInfo.matureProfileChart"></app-key-process-chart>
-  <h2 class="col-12 text-center">PROCESOS ESTRATEGICOS</h2>
+  <h2 class="col-12 text-center">PROCESOS ESTRATÉGICOS</h2>
   <hr />
   <app-chart class="col-12" [chartData]="chartInfo.strategicChart" [chartType]="types.radar"
   [title]="strategicProcess"></app-chart>
@@ -33,4 +33,6 @@
   <h2 class="col-12 text-center">PERFIL DE MADUREZ DE LOS PROCESOS ORGANIZACIONALES</h2>
   <hr />
   <app-mature-profile-chart class="col-12" [chartData]="chartInfo.matureProfileChart"></app-mature-profile-chart>
+  <hr />
+  <app-recommendation class="col-12" [chartData]="chartInfo.matureProfileChart"></app-recommendation>
 </div>
