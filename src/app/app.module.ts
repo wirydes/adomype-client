@@ -20,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatureProfileChartComponent } from './components/mature-profie-chart/mature-profile-chart.component';
 import { KeyProcessChartComponent } from './components/key-process-chart/key-process-chart.component';
+import { RecommendationComponent } from './components/recommendation/recommendation.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { KeyProcessChartComponent } from './components/key-process-chart/key-pro
     HomeComponent,
     ChartComponent,
     MatureProfileChartComponent,
-    KeyProcessChartComponent
+    KeyProcessChartComponent,
+    RecommendationComponent
   ],
   imports: [
     BrowserModule,

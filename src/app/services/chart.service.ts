@@ -43,7 +43,9 @@ export class ChartService {
               const value = this.data.datasets[i].data[j];
               if (value !== 0 && value !== null) {
                 const precision = value === 100 ? 3 : 2;
-                ctx.fillText(value.toPrecision(precision) + '%', p._model.x, p._model.y + 20);
+                const iX = p._model.x < 0 ? -10 : 10;
+                const iY = p._model.y < 0 ? -10 : 10;
+                ctx.fillText(value.toPrecision(precision) + '%', p._model.x + iX , p._model.y + iY);
               }
             });
           });
