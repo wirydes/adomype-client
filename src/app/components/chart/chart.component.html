@@ -12,12 +12,12 @@
                     <tr *ngFor="let row of rows">
                         <td class="border border-dark">{{row.label}}</td>
                         <td class="border border-dark text-center">{{row.value}}%</td>
-                        <td class="border border-dark text-center" [style]="getColor('' + row.value)">{{chartService.getMaturePercentage(row.value)}}</td>
+                        <td class="border border-dark text-center" [style]="getColor('' + row.value)">{{chartService.getMatureLv(row.value)}}</td>
                     </tr>
                     <tr>
                         <td class="border border-dark font-weight-bold">Resumen</td>
                         <td class="border border-dark text-center">{{resumeLabel}}%</td>
-                        <td class="border border-dark text-center" [style]="getColor(resumeLabel)">{{chartService.getMaturePercentage(resume)}}</td>
+                        <td class="border border-dark text-center" [style]="getColor(resumeLabel)">{{chartService.getMatureLv(resume)}}</td>
                     </tr>
                 </tbody>
             </table>

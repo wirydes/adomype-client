@@ -45,7 +45,7 @@ export class ChartService {
                 const precision = value === 100 ? 3 : 2;
                 // const iX = p._model.x < 0 ? -10 : 10;
                 // const iY = p._model.y < 0 ? -10 : 10;
-                ctx.fillText(value.toPrecision(precision) + '%', p._model.x + 10 , p._model.y + 10);
+                ctx.fillText(value.toPrecision(precision) + '%', p._model.x, p._model.y);
               }
             });
           });
@@ -72,7 +72,7 @@ export class ChartService {
     return this.sanitizer.bypassSecurityTrustStyle('background-color: red;');
   }
 
-  getMaturePercentage(value: number) {
+  getMatureLv(value: number) {
     if (value > 84) {
       return 'Maduro';
     }

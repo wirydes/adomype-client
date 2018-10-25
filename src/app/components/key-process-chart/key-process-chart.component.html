@@ -20,61 +20,61 @@
                         <td style="background-color:#D3D3D3;" 
                           class="border border-dark font-weight-bold">{{chartData.section2.name}}</td>
                         <td class="border border-dark text-center">{{section2Value}}%</td>
-                        <td class="border border-dark text-center" [style]="getColor('' + section2Value)">{{chartService.getMaturePercentage(section2Value)}}</td>
+                        <td class="border border-dark text-center" [style]="getColor('' + section2Value)">{{chartService.getMatureLv(section2Value)}}</td>
                     </tr>
                     <tr *ngFor="let row of rows2">
                         <td class="border border-dark">{{row.label}}</td>
                         <td class="border border-dark text-center">{{row.value}}%</td>
-                        <td class="border border-dark text-center" [style]="getColor('' + row.value)">{{chartService.getMaturePercentage(row.value)}}</td>
+                        <td class="border border-dark text-center" [style]="getColor('' + row.value)">{{chartService.getMatureLv(row.value)}}</td>
                     </tr>
                     <tr>
                         <td style="background-color:#D3D3D3;" 
                           class="border border-dark font-weight-bold">{{chartData.section3.name}}</td>
                         <td class="border border-dark text-center">{{section3Value}}%</td>
-                        <td class="border border-dark text-center" [style]="getColor('' + section2Value)">{{chartService.getMaturePercentage(section3Value)}}</td>
+                        <td class="border border-dark text-center" [style]="getColor('' + section2Value)">{{chartService.getMatureLv(section3Value)}}</td>
                     </tr>
                     <tr *ngFor="let row of rows3">
                         <td class="border border-dark">{{row.label}}</td>
                         <td class="border border-dark text-center">{{row.value}}%</td>
-                        <td class="border border-dark text-center" [style]="getColor('' + row.value)">{{chartService.getMaturePercentage(row.value)}}</td>
+                        <td class="border border-dark text-center" [style]="getColor('' + row.value)">{{chartService.getMatureLv(row.value)}}</td>
                     </tr>
                     <tr>
                         <td style="background-color:#D3D3D3;"
                           class="border border-dark font-weight-bold">{{chartData.section4.name}}</td>
                         <td class="border border-dark text-center">{{section4Value}}%</td>
-                        <td class="border border-dark text-center" [style]="getColor('' + section2Value)">{{chartService.getMaturePercentage(section4Value)}}</td>
+                        <td class="border border-dark text-center" [style]="getColor('' + section2Value)">{{chartService.getMatureLv(section4Value)}}</td>
                     </tr>
                     <tr *ngFor="let row of rows4">
                         <td class="border border-dark">{{row.label}}</td>
                         <td class="border border-dark text-center">{{row.value}}%</td>
-                        <td class="border border-dark text-center" [style]="getColor('' + row.value)">{{chartService.getMaturePercentage(row.value)}}</td>
+                        <td class="border border-dark text-center" [style]="getColor('' + row.value)">{{chartService.getMatureLv(row.value)}}</td>
                     </tr>
                     <tr>
                         <td style="background-color:#D3D3D3;"
                           class="border border-dark font-weight-bold">{{chartData.section5.name}}</td>
                         <td class="border border-dark text-center">{{section5Value}}%</td>
-                        <td class="border border-dark text-center" [style]="getColor('' + section5Value)">{{chartService.getMaturePercentage(section5Value)}}</td>
+                        <td class="border border-dark text-center" [style]="getColor('' + section5Value)">{{chartService.getMatureLv(section5Value)}}</td>
                     </tr>
                     <tr *ngFor="let row of rows5">
                         <td class="border border-dark">{{row.label}}</td>
                         <td class="border border-dark text-center">{{row.value}}%</td>
-                        <td class="border border-dark text-center" [style]="getColor('' + row.value)">{{chartService.getMaturePercentage(row.value)}}</td>
+                        <td class="border border-dark text-center" [style]="getColor('' + row.value)">{{chartService.getMatureLv(row.value)}}</td>
                     </tr>
                     <tr>
                         <td style="background-color:#D3D3D3;"
                           class="border border-dark font-weight-bold">{{chartData.section6.name}}</td>
                         <td class="border border-dark text-center">{{section6Value}}%</td>
-                        <td class="border border-dark text-center" [style]="getColor('' + section6Value)">{{chartService.getMaturePercentage(section6Value)}}</td>
+                        <td class="border border-dark text-center" [style]="getColor('' + section6Value)">{{chartService.getMatureLv(section6Value)}}</td>
                     </tr>
                     <tr *ngFor="let row of rows6">
                         <td class="border border-dark">{{row.label}}</td>
                         <td class="border border-dark text-center">{{row.value}}%</td>
-                        <td class="border border-dark text-center" [style]="getColor('' + row.value)">{{chartService.getMaturePercentage(row.value)}}</td>
+                        <td class="border border-dark text-center" [style]="getColor('' + row.value)">{{chartService.getMatureLv(row.value)}}</td>
                     </tr>
                     <tr>
                         <td class="border border-dark font-weight-bold">Resumen</td>
                         <td class="border border-dark text-center">{{resumeLabel}}%</td>
-                        <td class="border border-dark text-center" [style]="getColor(resumeLabel)">{{chartService.getMaturePercentage(resume)}}</td>
+                        <td class="border border-dark text-center" [style]="getColor(resumeLabel)">{{chartService.getMatureLv(resume)}}</td>
                     </tr>
                 </tbody>
             </table>
