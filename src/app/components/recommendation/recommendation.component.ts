@@ -21,8 +21,8 @@ export class RecommendationComponent implements OnInit {
       return (index + 1) === part;
     });
 
-    if (partValue !== undefined) {
-      const percentage = this.chartService.getMaturePercentage(parseFloat(partValue));
+    if (!!partValue) {
+      const percentage = this.chartService.getMatureLv(parseFloat(partValue.value));
       if (percentage === 'Artesanal' || percentage === 'Incipiente') {
         return true;
       }
