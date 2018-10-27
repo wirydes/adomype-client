@@ -18,9 +18,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+// components
 import { MatureProfileChartComponent } from './components/mature-profie-chart/mature-profile-chart.component';
 import { KeyProcessChartComponent } from './components/key-process-chart/key-process-chart.component';
 import { RecommendationComponent } from './components/recommendation/recommendation.component';
+import { StudentHomeComponent } from './components/student-home/student-home.component';
 
 
 @NgModule({
@@ -30,7 +33,8 @@ import { RecommendationComponent } from './components/recommendation/recommendat
     ChartComponent,
     MatureProfileChartComponent,
     KeyProcessChartComponent,
-    RecommendationComponent
+    RecommendationComponent,
+    StudentHomeComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +48,8 @@ import { RecommendationComponent } from './components/recommendation/recommendat
     MatCardModule,
     MatSelectModule,
     MatButtonModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
