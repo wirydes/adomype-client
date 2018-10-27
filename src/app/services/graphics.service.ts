@@ -20,4 +20,8 @@ export class GraphicsService {
   getSurveyChartInfo(id: number): Observable<ChartsConfigModel> {
     return this.http.get<ChartsConfigModel>(this.url + '/chart/config/' + id);
   }
+
+  getSurveyChartByToken(token: string): Observable<ChartsConfigModel> {
+    return this.http.get<ChartsConfigModel>(this.url + '/chart/' + token);
+  }
 }

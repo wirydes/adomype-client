@@ -42,14 +42,14 @@ export class ChartComponent implements OnInit, OnChanges {
     for (let i = 0; i < length; i++) {
       const row = {
         label: labels[i],
-        value: values[i]
+        value: '' + parseInt('' + values[i], 10)
       };
       this.resume += values[i];
       this.rows.push(row);
     }
     this.resume = this.resume / (length + 1);
     const precision = this.chartService.getPrecision(this.resume);
-    this.resumeLabel = this.resume.toPrecision(precision);
+    this.resumeLabel = '' + parseInt('' + this.resume, 10);
   }
 
   handleRadar() {

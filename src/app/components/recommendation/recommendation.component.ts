@@ -22,7 +22,7 @@ export class RecommendationComponent implements OnInit {
     });
 
     if (!!partValue) {
-      const percentage = this.chartService.getMatureLv(parseFloat(partValue.value));
+      const percentage = this.chartService.getMatureLv(parseInt(partValue.value, 10));
       if (percentage === 'Artesanal' || percentage === 'Incipiente') {
         return true;
       }

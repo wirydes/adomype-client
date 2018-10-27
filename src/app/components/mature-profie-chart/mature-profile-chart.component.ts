@@ -79,7 +79,7 @@ export class MatureProfileChartComponent implements OnInit, OnChanges {
     const s4 = this.chartService.getPercentage(this.chartData.section4.parts);
     const s5 = this.chartService.getPercentage(this.chartData.section5.parts);
     const s6 = this.chartService.getPercentage(this.chartData.section6.parts);
-    const keyProcess = (parseFloat(s2) + parseFloat(s3) + parseFloat(s4) + parseFloat(s5) + parseFloat(s6)) / 5;
+    const keyProcess = (parseInt(s2, 10) + parseInt(s3, 10) + parseInt(s4, 10) + parseInt(s5, 10) + parseInt(s6, 10)) / 5;
     const precision = this.chartService.getPrecision(keyProcess);
     this.process.keyProcess = keyProcess.toPrecision(precision);
   }

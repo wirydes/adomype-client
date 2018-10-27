@@ -55,7 +55,7 @@ export class ChartService {
   }
 
   getColor(sectionValue: string) {
-    const value = parseFloat(sectionValue);
+    const value = parseInt(sectionValue, 10);
 
     if (value > 84) {
       return this.sanitizer.bypassSecurityTrustStyle('background-color: green;');

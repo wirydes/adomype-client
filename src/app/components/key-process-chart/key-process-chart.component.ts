@@ -39,7 +39,7 @@ export class KeyProcessChartComponent implements OnInit, OnChanges {
     for (let i = 0; i < length; i++) {
       const row = {
         label: parts[i].label,
-        value: parts[i].value
+        value: '' + parseInt('' + parts[i].value, 10)
       };
       section += parts[i].value;
       rows.push(row);
@@ -50,11 +50,11 @@ export class KeyProcessChartComponent implements OnInit, OnChanges {
     return section.toPrecision(precision);
   }
   calculateResume() {
-    this.resume = (parseFloat(this.section2Value) + parseFloat(this.section3Value) +
-    parseFloat(this.section4Value) + parseFloat(this.section5Value) +
-    parseFloat(this.section6Value)) / 5;
+    this.resume = (parseInt(this.section2Value, 10) + parseInt(this.section3Value, 10) +
+    parseInt(this.section4Value, 10) + parseInt(this.section5Value, 10) +
+    parseInt(this.section6Value, 10)) / 5;
     const precision = this.chartService.getPrecision(this.resume);
-    this.resumeLabel = this.resume.toPrecision(precision);
+    this.resumeLabel = '' + parseInt('' + this.resume, 10);
   }
 
   handleRadar() {
