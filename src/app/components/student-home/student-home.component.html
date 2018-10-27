@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="col-12">
+        <div class="col"></div>
+        <mat-form-field class="col">
+            <input matInput placeholder="Token" formControlName="token" >
+        </mat-form-field>
+        <div class="col">
+          <button class="btn btn-outline-primary" [disabled]="isDisabled()" type="submit">
+            <i class="fas fa-chart-pie"></i>Obtener graficas</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <div class="row" *ngIf="!!chartInfo">
+    <h2 class="col-12 text-center">PROCESOS ESTRATÉGICOS</h2>
+    <hr />
+    <app-chart class="col-12" [chartData]="chartInfo.strategicChart" [chartType]="types.radar" [title]="strategicProcess"></app-chart>
+    <h2 class="col-12 text-center">PROCESOS CLAVE</h2>
+    <hr />
+    <app-key-process-chart class="col-12" [chartData]="chartInfo.matureProfileChart"></app-key-process-chart>
+    <h2 class="col-12 text-center">PROCESOS SOPORTE</h2>
+    <hr />
+    <app-chart class="col-12" [chartData]="chartInfo.supportProcessChart" [chartType]="types.radar" [title]="supportProcess"></app-chart>
+    <h2 class="col-12 text-center">NIVEL DE MADUREZ ORGANIZACIONAL</h2>
+    <hr />
+    <app-chart class="col-12" [chartData]="chartInfo.organizationalMatureChart" [chartType]="types.hBar" [title]="''"></app-chart>
+    <h2 class="col-12 text-center">PERFIL DE MADUREZ DE LOS PROCESOS ORGANIZACIONALES</h2>
+    <hr />
+    <app-mature-profile-chart class="col-12" [chartData]="chartInfo.matureProfileChart"></app-mature-profile-chart>
+    <hr />
+    <app-recommendation class="col-12" [chartData]="chartInfo.matureProfileChart"></app-recommendation>
+  </div>
