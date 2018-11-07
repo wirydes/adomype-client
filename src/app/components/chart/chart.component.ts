@@ -47,7 +47,7 @@ export class ChartComponent implements OnInit, OnChanges {
       this.resume += values[i];
       this.rows.push(row);
     }
-    this.resume = this.resume / (length + 1);
+    this.resume = this.resume / length;
     const precision = this.chartService.getPrecision(this.resume);
     this.resumeLabel = '' + parseInt('' + this.resume, 10);
   }

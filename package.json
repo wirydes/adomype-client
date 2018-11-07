@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "prod": "ng build --prod --output-hashing none --build-optimizer",
+    "prod": "ng build --prod --output-hashing=none --build-optimizer",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -23,7 +23,7 @@
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
-    "@fortawesome/fontawesome-free": "^5.3.1",
+    "@fortawesome/fontawesome-free": "^5.5.0",
     "bootstrap": "^4.1.3",
     "chart.js": "^2.7.2",
     "core-js": "^2.5.4",

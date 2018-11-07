@@ -13,21 +13,25 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/graphics-client",
-            "deployUrl": "diagnostico",
+            "outputPath": "diagnostico",
+            "deployUrl": "diagnostico/",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
+            "i18nFile": "src/app/shared/locale/i18n.json",
+            "i18nFormat": "json",
+            "i18nLocale": "en",
+            "i18nMissingTranslation": "error",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
               "src/styles.css",
+              "./node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "./node_modules/ngx-toastr/toastr.css",
-              "./node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+              "./node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
               "./node_modules/moment/min/moment.min.js",
