@@ -55,10 +55,9 @@ export class MatureProfileChartComponent implements OnInit, OnChanges {
   setParts(array: ChartFieldModel[], part: string) {
     const result: DisplayInfoModel[] = [];
     array.forEach((item, i) => {
-      const precision = this.chartService.getPrecision(item.value);
       const partIndex = part + '.' + (i + 1);
       this.partsNames.push(partIndex + ' ' + item.label);
-      result.push(this.getDisplayInfo(partIndex, item.value.toPrecision(precision)));
+      result.push(this.getDisplayInfo(partIndex, '' + item.value));
     });
     this.parts.push({array: result});
   }
@@ -79,7 +78,7 @@ export class MatureProfileChartComponent implements OnInit, OnChanges {
     const s4 = this.chartService.getPercentage(this.chartData.section4.parts);
     const s5 = this.chartService.getPercentage(this.chartData.section5.parts);
     const s6 = this.chartService.getPercentage(this.chartData.section6.parts);
-    const keyProcess = (parseInt(s2, 10) + parseInt(s3, 10) + parseInt(s4, 10) + parseInt(s5, 10) + parseInt(s6, 10)) / 5;
+    const keyProcess = (parseFloat(s2) + parseFloat(s3) + parseFloat(s4) + parseFloat(s5) + parseFloat(s6)) / 5;
     const precision = this.chartService.getPrecision(keyProcess);
     this.process.keyProcess = keyProcess.toPrecision(precision);
   }
@@ -126,13 +125,13 @@ export class MatureProfileChartComponent implements OnInit, OnChanges {
     array.push({
       label: this.chartData.section1.name,
       data: [
-        this.chartData.section1.parts[0].value,
-        this.chartData.section2.parts[0].value,
-        this.chartData.section3.parts[0].value,
-        this.chartData.section4.parts[0].value,
-        this.chartData.section5.parts[0].value,
-        this.chartData.section6.parts[0].value,
-        this.chartData.section7.parts[0].value,
+        parseInt(this.chartData.section1.parts[0].value + '', 10),
+        parseInt(this.chartData.section2.parts[0].value + '', 10),
+        parseInt(this.chartData.section3.parts[0].value + '', 10),
+        parseInt(this.chartData.section4.parts[0].value + '', 10),
+        parseInt(this.chartData.section5.parts[0].value + '', 10),
+        parseInt(this.chartData.section6.parts[0].value + '', 10),
+        parseInt(this.chartData.section7.parts[0].value + '', 10),
       ],
       borderColor: 'blue',
       backgroundColor: 'rgb(107,142,35,0.6)',
@@ -142,13 +141,13 @@ export class MatureProfileChartComponent implements OnInit, OnChanges {
     array.push({
       label: this.chartData.section2.name,
       data: [
-        this.chartData.section1.parts[1].value,
-        this.chartData.section2.parts[1].value,
-        this.chartData.section3.parts[1].value,
-        this.chartData.section4.parts[1].value,
-        this.chartData.section5.parts[1].value,
-        this.chartData.section6.parts[1].value,
-        this.chartData.section7.parts[1].value,
+        parseInt(this.chartData.section1.parts[1].value + '', 10),
+        parseInt(this.chartData.section2.parts[1].value + '', 10),
+        parseInt(this.chartData.section3.parts[1].value + '', 10),
+        parseInt(this.chartData.section4.parts[1].value + '', 10),
+        parseInt(this.chartData.section5.parts[1].value + '', 10),
+        parseInt(this.chartData.section6.parts[1].value + '', 10),
+        parseInt(this.chartData.section7.parts[1].value + '', 10),
       ],
       borderColor: 'blue',
       backgroundColor: 'rgb(107,142,35,0.6)',
@@ -158,13 +157,13 @@ export class MatureProfileChartComponent implements OnInit, OnChanges {
     array.push({
       label: this.chartData.section3.name,
       data: [
-        this.chartData.section1.parts[2].value,
-        this.chartData.section2.parts[2].value,
-        this.chartData.section3.parts[2].value,
+        parseInt(this.chartData.section1.parts[2].value + '', 10),
+        parseInt(this.chartData.section2.parts[2].value + '', 10),
+        parseInt(this.chartData.section3.parts[2].value + '', 10),
         0,
         0,
         0,
-        this.chartData.section7.parts[2].value,
+        parseInt(this.chartData.section7.parts[2].value + '', 10),
       ],
       borderColor: 'blue',
       backgroundColor: 'rgb(107,142,35,0.6)',
@@ -180,7 +179,7 @@ export class MatureProfileChartComponent implements OnInit, OnChanges {
         0,
         0,
         0,
-        this.chartData.section7.parts[3].value,
+        parseInt(this.chartData.section7.parts[3].value + '', 10),
       ],
       borderColor: 'blue',
       backgroundColor: 'rgb(107,142,35,0.6)',
@@ -208,6 +207,10 @@ export class MatureProfileChartComponent implements OnInit, OnChanges {
     if (!!changes.chartData.currentValue) {
       this.handleBar();
     }
+  }
+
+  getDisplayValue(value) {
+    return this.chartService.getDisplayValue(value);
   }
 
 
