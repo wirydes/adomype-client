@@ -12,11 +12,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr *ngIf="checkProcessTitle(1)">
           <td colspan="2" class="text-center">Proceso gestionar la organización</td>
         </tr>
-        <tr *ngIf="checkPart(1, 1)">
-          <td>
+        <tr *ngIf="checkRecomendation(1, 1)">
+          <td [style]="getColor(1, 1)">
             Análisis de riesgos organizacionales
           </td>
           <td>
@@ -26,8 +26,8 @@
             prioridades en su atención.
           </td>
         </tr>
-        <tr *ngIf="checkPart(1,2)">
-          <td>
+        <tr *ngIf="checkRecomendation(1,2)">
+          <td [style]="getColor(1, 2)">
             Planeación estratégica
           </td>
           <td>
@@ -38,8 +38,8 @@
             clientes, procesos y personas.
           </td>
         </tr>
-        <tr *ngIf="checkPart(1,3)">
-          <td>
+        <tr *ngIf="checkRecomendation(1,3)">
+          <td [style]="getColor(1, 3)">
             Tableros de control estratégico
           </td>
           <td>
@@ -49,11 +49,11 @@
             procesos y personas.
           </td>
         </tr>
-        <tr>
+        <tr *ngIf="checkProcessTitle(2)">
           <td colspan="2" class="text-center">Proceso planear y mejorar la prestación del servicio</td>
         </tr>
-        <tr *ngIf="checkPart(2, 1)">
-          <td>
+        <tr *ngIf="checkRecomendation(2, 1)">
+          <td [style]="getColor(2, 1)">
             Planeación de la cadena de suministro
           </td>
           <td>
@@ -63,8 +63,8 @@
             servicios que se han vendido con o el consumo de materiales.
           </td>
         </tr>
-        <tr *ngIf="checkPart(2, 2)">
-          <td>
+        <tr *ngIf="checkRecomendation(2, 2)">
+          <td [style]="getColor(2, 2)">
             Documentación de procedimientos
           </td>
           <td>
@@ -74,8 +74,8 @@
             involucrados lo que deben hacer y facilite la capacitación de nuevos integrantes.
           </td>
         </tr>
-        <tr *ngIf="checkPart(2, 3)">
-          <td>
+        <tr *ngIf="checkRecomendation(2, 3)">
+          <td [style]="getColor(2, 3)">
             Medición de indicadores operativos
           </td>
           <td>
@@ -85,11 +85,11 @@
             o servicio brindado, para dar un monitoreo adecuado y determinar acciones de mejora.
           </td>
         </tr>
-        <tr>
+        <tr *ngIf="checkProcessTitle(3)">
           <td colspan="2" class="text-center">Proceso abastecer</td>
         </tr>
-        <tr *ngIf="checkPart(3, 1)">
-          <td>
+        <tr *ngIf="checkRecomendation(3, 1)">
+          <td [style]="getColor(3, 1)">
             Criterios de compras
           </td>
           <td>
@@ -99,8 +99,8 @@
             deben cumplir los productos y sus proveedores.
           </td>
         </tr>
-        <tr *ngIf="checkPart(3, 2)">
-          <td>
+        <tr *ngIf="checkRecomendation(3, 2)">
+          <td [style]="getColor(3, 2)">
             Selección de proveedores nuevos con base en evaluación
           </td>
           <td>
@@ -110,8 +110,8 @@
             entre proveedores, y hacer la selección de la mejor opción basada en dicha comparación.
           </td>
         </tr>
-        <tr *ngIf="checkPart(3, 3)">
-          <td>
+        <tr *ngIf="checkRecomendation(3, 3)">
+          <td [style]="getColor(3, 3)">
             Evaluación del desempeño de proveedores
           </td>
           <td>
@@ -121,11 +121,11 @@
             permita la toma de decisiones basadas en datos.
           </td>
         </tr>
-        <tr>
+        <tr *ngIf="checkProcessTitle(4)">
           <td colspan="2" class="text-center">Proceso producir y entregar el servicio</td>
         </tr>
-        <tr *ngIf="checkPart(4, 1)">
-          <td>
+        <tr *ngIf="checkRecomendation(4, 1)">
+          <td [style]="getColor(4, 1)">
             Programación de la producción y/o distribución
           </td>
           <td>
@@ -136,8 +136,8 @@
             vehículos, etc.)
           </td>
         </tr>
-        <tr *ngIf="checkPart(4, 2)">
-          <td>
+        <tr *ngIf="checkRecomendation(4, 2)">
+          <td [style]="getColor(4, 1)">
             Preparación para la atención de solicitudes del cliente
           </td>
           <td>
@@ -147,11 +147,11 @@
             solicitud, un sistema para mantener orden y limpieza, etc.
           </td>
         </tr>
-        <tr>
+        <tr *ngIf="checkProcessTitle(5)">
           <td colspan="2" class="text-center">Proceso gestionar mercadotecnia y servicio al cliente</td>
         </tr>
-        <tr *ngIf="checkPart(5, 1)">
-          <td>
+        <tr *ngIf="checkRecomendation(5, 1)">
+          <td [style]="getColor(5, 1)">
             Estudios de mercado
           </td>
           <td>
@@ -161,8 +161,8 @@
             servicios.
           </td>
         </tr>
-        <tr *ngIf="checkPart(5, 2)">
-          <td>
+        <tr *ngIf="checkRecomendation(5, 2)">
+          <td [style]="getColor(5, 2)">
             Evaluación de la satisfacción del cliente
           </td>
           <td>
@@ -171,11 +171,11 @@
             de mejora con base en esta información.
           </td>
         </tr>
-        <tr>
+        <tr *ngIf="checkProcessTitle(6)">
           <td colspan="2" class="text-center">Proceso gestionar inventarios</td>
         </tr>
-        <tr *ngIf="checkPart(6, 1)">
-          <td>
+        <tr *ngIf="checkRecomendation(6, 1)">
+          <td [style]="getColor(6, 1)">
             Control de inventarios
           </td>
           <td>
@@ -188,8 +188,8 @@
             de productividad y rentabilidad.
           </td>
         </tr>
-        <tr *ngIf="checkPart(6, 2)">
-          <td>
+        <tr *ngIf="checkRecomendation(6, 2)">
+          <td [style]="getColor(6, 2)">
             Almacenamiento
           </td>
           <td>
@@ -202,11 +202,11 @@
             de productividad y rentabilidad.
           </td>
         </tr>
-        <tr>
+        <tr *ngIf="checkProcessTitle(7)">
           <td colspan="2" class="text-center">Proceso gestionar recursos</td>
         </tr>
-        <tr *ngIf="checkPart(7, 1)">
-          <td>
+        <tr *ngIf="checkRecomendation(7, 1)">
+          <td [style]="getColor(7, 1)">
             Detección de necesidades de capacitación
           </td>
           <td>
@@ -214,8 +214,8 @@
             necesidades de capacitación y promover su desarrollo.
           </td>
         </tr>
-        <tr *ngIf="checkPart(7, 1)">
-          <td>
+        <tr *ngIf="checkRecomendation(7, 1)">
+          <td [style]="getColor(7, 1)">
             Medición del clima laboral y cultura organizacional
           </td>
           <td>
@@ -224,8 +224,8 @@
             y cumplimiento de las metas organizacionales.
           </td>
         </tr>
-        <tr *ngIf="checkPart(7, 2)">
-          <td>
+        <tr *ngIf="checkRecomendation(7, 2)">
+          <td [style]="getColor(7, 2)">
             Mantenimiento preventivo
           </td>
           <td>
@@ -236,8 +236,8 @@
             mermas en la calidad del producto, etc.
           </td>
         </tr>
-        <tr *ngIf="checkPart(7, 3)">
-          <td>
+        <tr *ngIf="checkRecomendation(7, 3)">
+          <td [style]="getColor(7, 3)">
             Análisis del entorno tecnológico y de innovación
           </td>
           <td>
@@ -248,8 +248,8 @@
             competidores para identificar fuentes de diferenciación.
           </td>
         </tr>
-        <tr *ngIf="checkPart(7, 4)">
-          <td>
+        <tr *ngIf="checkRecomendation(7, 4)">
+          <td [style]="getColor(7, 4)">
             Control de ingresos y egresos
           </td>
           <td>
