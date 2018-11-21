@@ -210,7 +210,8 @@ export class MatureProfileChartComponent implements OnInit, OnChanges {
   }
 
   getDisplayValue(value) {
-    return this.chartService.getDisplayValue(value);
+    const valueParsed = this.chartService.getDisplayValue(value);
+    return parseInt(valueParsed, 10);
   }
 
 

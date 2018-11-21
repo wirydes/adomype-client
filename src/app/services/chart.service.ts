@@ -10,16 +10,15 @@ export class ChartService {
   constructor(private sanitizer: DomSanitizer) { }
 
   getPercentage(parts): string {
-    let summary = 0;
+    let summary = 0.0;
     let i = 0;
     parts.forEach(element => {
       summary += element.value;
       i++;
     });
-    const precision = this.getPrecision(summary);
-    const result = (summary / i).toPrecision(precision);
+    const result = (summary / i);
 
-    return result;
+    return result + '';
   }
 
   getPrecision(value: number): number {
@@ -86,5 +85,9 @@ export class ChartService {
     }
 
     return 'Incipiente';
+  }
+
+  getDisplayValue(value: any) {
+    return '' + parseFloat(value);
   }
 }
