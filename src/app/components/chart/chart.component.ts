@@ -171,7 +171,7 @@ export class ChartComponent implements OnInit, OnChanges {
   }
 
   handleHorizontalBar() {
-    const label = 'Nivel de madurez:' + this.chartData.matureLv;
+    const label = 'Nivel de Madurez:' + this.chartData.matureLv;
     const color = this.getHorizontalColor();
     const value1 = this.chartData.fullFinishPercentage;
     const value2 = this.chartData.unFinishPercentage;

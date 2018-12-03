@@ -4,7 +4,7 @@ import { ChartFieldModel } from '../../models/chart.field.model';
 import { ChartService } from '../../services/chart.service';
 import { ChartRowInfoModel } from 'src/app/models/chart.row.info.model';
 import { MatureProfileChartModel } from 'src/app/models/mature.profile.chart.model';
-const titleKeyProcess = 'Situacion actual de los procesos claves';
+const titleKeyProcess = 'Situacion Actual De Los Procesos Claves';
 @Component({
   selector: 'app-key-process-chart',
   templateUrl: './key-process-chart.component.html',

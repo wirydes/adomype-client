@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ChartsConfigModel } from '../../models/charts.config.model';
 import * as chartTypes from '../../models/chart.type';
 
-const titleStrategicProces = 'Situacion actual de los procesos estrategicos';
+const titleStrategicProces = 'Situacion Actual De Los Procesos Estrategicos';
 const titleSupportProcess = 'Gestionar Recursos';
 @Component({
   selector: 'app-home',
