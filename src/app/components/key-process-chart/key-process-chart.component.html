@@ -31,7 +31,7 @@
                         <td style="background-color:#D3D3D3;" 
                           class="border border-dark font-weight-bold">{{chartData.section3.name}}</td>
                         <td class="border border-dark text-center">{{section3Value}}%</td>
-                        <td class="border border-dark text-center" [style]="getColor('' + section2Value)">{{chartService.getMatureLv(section3Value)}}</td>
+                        <td class="border border-dark text-center" [style]="getColor('' + section3Value)">{{chartService.getMatureLv(section3Value)}}</td>
                     </tr>
                     <tr *ngFor="let row of rows3">
                         <td class="border border-dark">{{row.label}}</td>
@@ -42,7 +42,7 @@
                         <td style="background-color:#D3D3D3;"
                           class="border border-dark font-weight-bold">{{chartData.section4.name}}</td>
                         <td class="border border-dark text-center">{{section4Value}}%</td>
-                        <td class="border border-dark text-center" [style]="getColor('' + section2Value)">{{chartService.getMatureLv(section4Value)}}</td>
+                        <td class="border border-dark text-center" [style]="getColor('' + section4Value)">{{chartService.getMatureLv(section4Value)}}</td>
                     </tr>
                     <tr *ngFor="let row of rows4">
                         <td class="border border-dark">{{row.label}}</td>
