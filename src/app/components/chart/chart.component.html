@@ -6,8 +6,8 @@
                 <tbody>
                     <tr>
                         <th class="border border-dark">{{title}}</th>
-                        <th class="border border-dark"> Porcentaje de cumplimiento</th>
-                        <th class="border border-dark">Nivel de madurez</th>
+                        <th class="border border-dark"> Porcentaje De Cumplimiento</th>
+                        <th class="border border-dark">Nivel De Madurez</th>
                     </tr>
                     <tr *ngFor="let row of rows">
                         <td class="border border-dark">{{row.label}}</td>
@@ -23,9 +23,9 @@
             </table>
         </div>
         <div class="col-2">
-            <h4 class="text-nowrap" style="margin-top:5%">Nivel de madurez </h4>
-            <div class="col-12 text-center p-0" [style]="getColor('100')">85-100 maduro</div>
-            <div class="col-12 text-center p-0" [style]="getColor('84')">62-84 En desarrollo</div>
+            <h4 class="text-nowrap" style="margin-top:5%">Nivel De Madurez </h4>
+            <div class="col-12 text-center p-0" [style]="getColor('100')">85-100 Maduro</div>
+            <div class="col-12 text-center p-0" [style]="getColor('84')">62-84 En Desarrollo</div>
             <div class="col-12 text-center p-0" [style]="getColor('61')">33-61 Artesanal</div>
             <div class="col-12 text-center p-0" [style]="getColor('32')">0-32 Incipiente</div>
         </div>

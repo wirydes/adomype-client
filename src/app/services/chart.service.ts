@@ -77,7 +77,7 @@ export class ChartService {
     }
 
     if (value > 61) {
-      return 'En desarrollo';
+      return 'En Desarrollo';
     }
 
     if (value > 32) {
